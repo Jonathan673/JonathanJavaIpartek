@@ -2,8 +2,7 @@ package com.zamazor.entidades;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-
-
+import java.util.Objects;
 
 public class Producto {
 	// variables de instancia
@@ -11,13 +10,31 @@ public class Producto {
 	private String nombre;
 	private LocalDate fechaCaducidad;
 	private BigDecimal precio;
-
-	// Constructor
+	// Constructores
 	public Producto(Long id, String nombre, LocalDate fechaCaducidad, BigDecimal precio) {
 		setId(id);
 		setNombre(nombre);
 		setFechaCaducidad(fechaCaducidad);
 		setPrecio(precio);
+	}
+	public Producto(Producto producto) {
+		this(producto.getId(), producto.getNombre(), producto.getFechaCaducidad(), producto.getPrecio());
+	}
+
+	public Producto(String nombre, LocalDate fechaCaducidad, BigDecimal precio) {
+		this(null, nombre, fechaCaducidad, precio);
+	}
+
+	public Producto(String nombre, BigDecimal precio) {
+		this(null, nombre, null, precio);
+	}
+
+	public Producto(String nombre) {
+		this(null, nombre, null, BigDecimal.ZERO);
+	}
+
+	public Producto() {
+		this(null, "Anónimo", null, BigDecimal.ZERO);
 	}
 
 	// Getters and Setters
@@ -64,6 +81,24 @@ public class Producto {
 			throw new RuntimeException("Precio obligatorio que no sea menos que cero");
 		}
 		this.precio = precio;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(fechaCaducidad, id, nombre, precio);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Producto other = (Producto) obj;
+		return Objects.equals(fechaCaducidad, other.fechaCaducidad) && Objects.equals(id, other.id)
+				&& Objects.equals(nombre, other.nombre) && Objects.equals(precio, other.precio);
 	}
 
 	@Override
