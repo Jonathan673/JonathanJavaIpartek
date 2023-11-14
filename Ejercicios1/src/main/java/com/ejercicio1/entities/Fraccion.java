@@ -47,22 +47,41 @@ public class Fraccion {
 	}
 
 	// metodos
-	public Fraccion Sumar(Fraccion fraccion) {
-		mcd();
-		return fraccion;
-	}
+    //sumar fracciones
+    public Fraccion Sumar(Fraccion f) {
+        Fraccion aux = new Fraccion();
+        aux.num = this.num * f.den + this.den * f.num;
+        aux.den = this.den * f.den;
+        aux.simplificar();  //se simplifica antes de devolverla                                                   
+        return aux;
+    }
+   
+    //restar fracciones
+    public Fraccion Restar(Fraccion f) {
+        Fraccion aux = new Fraccion();
+        aux.num = this.num * f.den - this.den * f.num;
+        aux.den = this.den * f.den;
+        aux.simplificar();  //se simplifica antes de devolverla
+        return aux;
+    }
+   
+    //multiplicar fracciones
+    public Fraccion Multiplicar(Fraccion f) {
+        Fraccion aux = new Fraccion();
+        aux.num = this.num * f.num;
+        aux.den = this.den * f.den;
+        aux.simplificar();  //se simplifica antes de devolverla
+        return aux;
+    }
 
-	public Fraccion Restar(Fraccion fraccion) {
-		return fraccion;
-	}
-
-	public Fraccion Multiplicar(Fraccion fraccion) {
-		return fraccion;
-	}
-
-	public Fraccion Dividir(Fraccion fraccion) {
-		return fraccion;
-	}
+    //dividir fracciones
+    public Fraccion Dividir(Fraccion f) {
+        Fraccion aux = new Fraccion();
+        aux.num = this.num * f.den;
+        aux.den = this.den * f.num;
+        aux.simplificar();  //se simplifica antes de devolverla
+        return aux;
+    }
 
 	// Cálculo del máximo común divisor
 	private int mcd() {
@@ -79,6 +98,12 @@ public class Fraccion {
 		}
 		return u;
 	}
+    //método para simplificar fracciones
+    private void simplificar() {
+        int n = mcd(); //se calcula el mcd de la fracción
+        num = num / n;
+        den = den / n;
+    }
 
 	@Override
 	public String toString() {
