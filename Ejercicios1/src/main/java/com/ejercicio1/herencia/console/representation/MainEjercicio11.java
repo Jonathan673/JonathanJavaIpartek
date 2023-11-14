@@ -20,6 +20,7 @@ public class MainEjercicio11 {
 		System.out.println(OP1);
 		System.out.println(OF1);
 		System.out.println(T1);
+		System.out.println(T1);
 	}
 
 }
