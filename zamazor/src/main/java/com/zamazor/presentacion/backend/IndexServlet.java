@@ -21,7 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	private static final UsuarioNegocio un = new UsuarioNegocioImplements(); 
+//	private static final UsuarioNegocio un = new UsuarioNegocioImplements(); 
 	
 	static {
 		DaoProducto dao = new DaoProductoMemoria();
@@ -35,40 +35,40 @@ public class IndexServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
 		
-		PrintWriter out = response.getWriter();
-
-		out.println(
-				"""
-				<!DOCTYPE html>
-				<html>
-				<head>
-					<title>Productos</title>
-				</head>
-				<body>
-					<table>
-						<thead>
-							<tr>
-								<th>Id</th>
-								<th>Nombre</th>
-								<th>Precio</th>
-								<th>Fecha de caducidad</th>
-							</tr>
-						</thead>
-						<tbody>
-				""");
-		
-		for(Producto p: un.listadoProductos()) {
-			out.printf("<tr><th><a href='datos-producto?id=%1$s'>%s</a></th><td>%s</td><td>%s</td><td>%s</td></tr>", 
-					p.getId(), p.getNombre(), p.getPrecio(), p.getFechaCaducidad());
-		}
-		
-		out.println(
-				"""
-				</tbody>
-				</table>
-				</body>
-				</html>
-				""");
+//		PrintWriter out = response.getWriter();
+//
+//		out.println(
+//				"""
+//				<!DOCTYPE html>
+//				<html>
+//				<head>
+//					<title>Productos</title>
+//				</head>
+//				<body>
+//					<table>
+//						<thead>
+//							<tr>
+//								<th>Id</th>
+//								<th>Nombre</th>
+//								<th>Precio</th>
+//								<th>Fecha de caducidad</th>
+//							</tr>
+//						</thead>
+//						<tbody>
+//				""");
+//		
+//		for(Producto p: un.listadoProductos()) {
+//			out.printf("<tr><th><a href='datos-producto?id=%1$s'>%s</a></th><td>%s</td><td>%s</td><td>%s</td></tr>", 
+//					p.getId(), p.getNombre(), p.getPrecio(), p.getFechaCaducidad());
+//		}
+//		
+//		out.println(
+//				"""
+//				</tbody>
+//				</table>
+//				</body>
+//				</html>
+//				""");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

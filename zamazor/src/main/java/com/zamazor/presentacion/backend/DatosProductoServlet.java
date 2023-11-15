@@ -56,7 +56,7 @@ public class DatosProductoServlet extends HttpServlet {
 		Producto p = un.datosProducto(id);
 		
 		out.printf("<dt>Id</dt><dd>%s</dd><dt>Nombre</dt><dd>%s</dd><dt>Precio</dt><dd>%s</dd><dt>Fecha de caducidad</dt><dd>%s</dd>", 
-					p.getId(), p.getNombre(), p.getPrecio(), p.getFechaCaducidad());
+				p.getId(), p.getNombre(), p.getPrecio(), p.getFechaCaducidad());
 		
 		out.println(
 				"""

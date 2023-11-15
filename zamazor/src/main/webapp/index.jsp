@@ -8,12 +8,12 @@
 		dao.borrar(1L);
 		dao.borrar(2L);
 		dao.borrar(3L);
-		dao.borrar(4L);
+		dao.borrar(4L); 
 
 		dao.insertar(new Producto());
 		dao.insertar(new Producto("Producto prueba"));
 		dao.insertar(new Producto("Otro producto", new BigDecimal("1234.56")));
-		dao.insertar(new Producto("Un producto más", LocalDate.of(2025, 1, 1), new BigDecimal("1234.56")));
+		dao.insertar(new Producto("Un coso más", LocalDate.of(2025, 1, 1), new BigDecimal("1234.56")));
 	}%>
 <!DOCTYPE html>
 <html>
