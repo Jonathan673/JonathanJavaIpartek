@@ -11,32 +11,27 @@ public class Fecha {
 
 	// Constructor con parámetros
 	public Fecha(int dia, int mes, int año) {
-		this.dia = dia;
-		this.mes = mes;
-		this.año = año;
+		setDia(dia);
+		setMes(mes);
+		setAño(año);
 	}
 
 	// setters y getters
 	public void setDia(int d) {
 		dia = d;
 	}
-
-	public void setMes(int m) {
-		mes = m;
-	}
-
-	public void setAño(int a) {
-		año = a;
-	}
-
 	public int getDia() {
 		return dia;
 	}
-
+	public void setMes(int m) {
+		mes = m;
+	}
 	public int getMes() {
 		return mes;
 	}
-
+	public void setAño(int a) {
+		año = a;
+	}
 	public int getAño() {
 		return año;
 	}
@@ -99,8 +94,6 @@ public class Fecha {
 			sb.append("0");
 		}
 		sb.append(mes);
-		sb.append("-");
-		sb.append(año);
-		return sb.toString();
+		return sb.toString()+ "-"+año;
 	}
 }
