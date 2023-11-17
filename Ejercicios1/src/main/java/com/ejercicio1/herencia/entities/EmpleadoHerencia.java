@@ -1,14 +1,14 @@
 package com.ejercicio1.herencia.entities;
 
-public class Empleado {
+public class EmpleadoHerencia {
 	//variables
 	private String nombre;
 
 	//constructores
-	public Empleado(String nombre) {
+	public EmpleadoHerencia(String nombre) {
 		this.setNombre(nombre);
 	}
-	public Empleado() {
+	public EmpleadoHerencia() {
 		if(this.getNombre() ==null) {
 			this.setNombre("Anónimo");
 		}

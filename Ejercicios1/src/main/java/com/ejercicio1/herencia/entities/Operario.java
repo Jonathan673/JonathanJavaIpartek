@@ -1,6 +1,6 @@
 package com.ejercicio1.herencia.entities;
 
-public class Operario extends Empleado{
+public class Operario extends EmpleadoHerencia{
 	public Operario(String nombre) {
 		super(nombre);
 	}

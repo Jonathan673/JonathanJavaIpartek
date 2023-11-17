@@ -65,8 +65,13 @@ public class Empleado {
 		return casado;
 	}
 
-	public void setCasado(boolean casado) {
-		this.casado = casado;
+	public void setCasado(String casado) {
+		if(casado.equalsIgnoreCase("si")||casado.equalsIgnoreCase("s")) {
+			this.casado = true;
+		}else {
+			this.casado = false;
+		}
+		
 	}
 
 	public int getNumeroHijos() {
@@ -115,13 +120,14 @@ public class Empleado {
 //				+ horasExtraMes + ", tipoIRPF=" + tipoIRPF + ", casado=" + casado + ", numeroHijos=" + numeroHijos
 //				+ "]";
 		StringBuilder sb = new StringBuilder();
-		sb.append(nif +" "+ nombre);
-		sb.append("Sueldo Base: "+ sueldoBase);
-		sb.append("Horas Extras: "+ horasExtraMes);
+		sb.append(nif +" "+ nombre+"\n");
+		sb.append("Sueldo Base: "+ sueldoBase+"\n");
+		sb.append("Horas Extras: "+ horasExtraMes+"\n");
+		sb.append("Tipo IRPF: "+ tipoIRPF+"\n");
 		if(casado) {
-			sb.append("Si");
+			sb.append("Casado: Si\n");
 		}else {
-			sb.append("No");
+			sb.append("Casado: No\n");
 		}
 		sb.append("Número de Hijos: "+ numeroHijos);
 		return sb.toString();
