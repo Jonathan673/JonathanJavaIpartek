@@ -34,9 +34,11 @@ public class DetalleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String sId = request.getParameter("id");
-		Long id = Long.parseLong(sId);
+		if(sId != null) {
+			Long id = Long.parseLong(sId);
+			request.setAttribute("producto", un.datosProducto(id));
+		}
 		
-		request.setAttribute("producto", un.datosProducto(id));
 		request.getRequestDispatcher("/WEB-INF/vistas/detalle.jsp").forward(request, response);
 	}
 

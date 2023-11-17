@@ -8,20 +8,15 @@
 <title>Detalle de producto</title>
 </head>
 <body>
-	<%
-	Producto p = (Producto) request.getAttribute("producto");
-	%>
-
 	<dl>
 		<dt>Id</dt>
-		<dd><%=p.getId()%></dd>
+		<dd>${producto.id}</dd>
 		<dt>Nombre</dt>
-		<dd><%=p.getNombre()%></dd>
+		<dd>${producto.nombre}</dd>
 		<dt>Precio</dt>
-		<dd><%=p.getPrecio()%></dd>
+		<dd>${producto.precio}</dd>
 		<dt>Fecha de caducidad</dt>
-		<dd><%=p.getFechaCaducidad()%></dd>
+		<dd>${producto.fechaCaducidad}</dd>
 	</dl>
-
 </body>
 </html>
