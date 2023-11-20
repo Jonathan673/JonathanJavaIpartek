@@ -57,7 +57,8 @@ public class DaoProductoSqlite implements DaoProducto {
 
 	@Override
 	public Producto obtenerPorId(Long id) {
-		try (Connection con = obtenerConexion(); PreparedStatement pst = con.prepareStatement(SQL_SELECT_ID);) {
+		try (Connection con = obtenerConexion(); 
+				PreparedStatement pst = con.prepareStatement(SQL_SELECT_ID);) {
 			pst.setLong(1, id);
 
 			Producto producto;
@@ -77,7 +78,8 @@ public class DaoProductoSqlite implements DaoProducto {
 
 	@Override
 	public Producto insertar(Producto producto) {
-		try (Connection con = obtenerConexion(); PreparedStatement pst = con.prepareStatement(SQL_INSERT);) {
+		try (Connection con = obtenerConexion(); 
+				PreparedStatement pst = con.prepareStatement(SQL_INSERT);) {
 			producto.setId(null);
 			productoAFila(producto, pst);
 
@@ -92,7 +94,8 @@ public class DaoProductoSqlite implements DaoProducto {
 
 	@Override
 	public Producto modificar(Producto producto) {
-		try (Connection con = obtenerConexion(); PreparedStatement pst = con.prepareStatement(SQL_UPDATE);) {
+		try (Connection con = obtenerConexion(); 
+				PreparedStatement pst = con.prepareStatement(SQL_UPDATE);) {
 			productoAFila(producto, pst);
 
 			ejecutarCambio(pst);
@@ -106,7 +109,8 @@ public class DaoProductoSqlite implements DaoProducto {
 
 	@Override
 	public void borrar(Long id) {
-		try (Connection con = obtenerConexion(); PreparedStatement pst = con.prepareStatement(SQL_DELETE);) {
+		try (Connection con = obtenerConexion(); 
+				PreparedStatement pst = con.prepareStatement(SQL_DELETE);) {
 			pst.setLong(1, id);
 
 			ejecutarCambio(pst);
@@ -122,7 +126,8 @@ public class DaoProductoSqlite implements DaoProducto {
 			throw new AccesoDatosException("No se ha proporcionado ningún nombre para la búsqueda");
 		}
 
-		try (Connection con = obtenerConexion(); PreparedStatement pst = con.prepareStatement(SQL_SELECT_NOMBRE);) {
+		try (Connection con = obtenerConexion(); 
+				PreparedStatement pst = con.prepareStatement(SQL_SELECT_NOMBRE);) {
 
 			pst.setString(1, "%" + nombre + "%");
 
@@ -157,7 +162,8 @@ public class DaoProductoSqlite implements DaoProducto {
 			throw new AccesoDatosException("No se ha proporcionado ninguna fecha para la búsqueda");
 		}
 
-		try (Connection con = obtenerConexion(); PreparedStatement pst = con.prepareStatement(SQL_SELECT_CADUCADOS);) {
+		try (Connection con = obtenerConexion(); 
+				PreparedStatement pst = con.prepareStatement(SQL_SELECT_CADUCADOS);) {
 
 			pst.setString(1, fecha.toString());
 
