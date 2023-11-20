@@ -6,13 +6,12 @@ import com.ejercicio1.entities.Empleado;
 
 public class MainEjercicio7 {
 	static Scanner sc = new Scanner(System.in);
+	static Empleado[] listaEmpleados;
 
 	public static void main(String[] args) {
-		
-		
+
 		int topeLista = 20;
-		Empleado[] listaEmpleados;	
-		
+
 		Empleado empleado;
 		String nif;
 		int numeroEmpleados;
@@ -35,7 +34,7 @@ public class MainEjercicio7 {
 		listaEmpleados = new Empleado[topeLista];
 		do {
 			numeroEmpleados--;
-			
+
 			System.out.println("---Datos del nuevo empleado---");
 			System.out.println("Indique el Nif del empleado: ");
 			nif = sc.next();
@@ -51,7 +50,6 @@ public class MainEjercicio7 {
 			casado = sc.next();
 			System.out.println("Cuantos hijos tiene el empleado?");
 			numeroHijos = sc.nextInt();
-			
 
 			empleado = new Empleado(nif);
 			empleado.setNombre(nombreEmpleado);
@@ -60,9 +58,7 @@ public class MainEjercicio7 {
 			empleado.setTipoIRPF(irpf);
 			empleado.setCasado(casado);
 			empleado.setNumeroHijos(numeroHijos);
-			empleado.setImporteHorasExtra(importeHorasExtra());
-			
-			
+
 			listaEmpleados[contador] = empleado;
 			contador++;
 			System.out.println("Empleado introducido");
@@ -70,16 +66,58 @@ public class MainEjercicio7 {
 
 		System.out.println("Se han introducido todos los empleados");
 
+		// añadimos el importe de las horas extra
+		Empleado.setImporteHorasExtra(importeHorasExtra());
 
+		// listamos los empleados para comprobar que esta bien
+//		for (Empleado e : listaEmpleados) {
+//			System.out.println(e.Retenciones());
+//		}
+//		for (Empleado e : listaEmpleados) {
+//			System.out.println(e.SueldoBruto());
+//		}
+//		for (Empleado e : listaEmpleados) {
+//			System.out.println(e.SueldoBruto()-e.Retenciones());
+//		}
+
+		MayorMenorSueldo();
+//		MayorMenorSueldoPorHorasExtra();
+//		EmpleadosListadosMenorAMayorSueldo();
+	}
+
+	private static void EmpleadosListadosMenorAMayorSueldo() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private static void MayorMenorSueldoPorHorasExtra() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private static void MayorMenorSueldo() {
+		// TODO Auto-generated method stub
+		Empleado mayorSueldo = listaEmpleados[0];
+		Empleado menorSueldo = listaEmpleados[0];
 		
-		for(Empleado e:listaEmpleados) {
-			System.out.println(e.Retenciones());
+		
+		for (int i = 1; i < listaEmpleados.length; i++) {
+			if((listaEmpleados[i].SueldoBruto() - listaEmpleados[i].Retenciones()) > 
+					(mayorSueldo.SueldoBruto() - mayorSueldo.Retenciones())) {
+				mayorSueldo = listaEmpleados[i];
+			}
+			if((listaEmpleados[i].SueldoBruto() - listaEmpleados[i].Retenciones()) < 
+					(menorSueldo.SueldoBruto() - menorSueldo.Retenciones())) {
+				menorSueldo = listaEmpleados[i];
+			}
 		}
+		System.out.println("El empleado con el salario mas alto es: "+mayorSueldo +" "
+				+ "\ny el que menos gana es: "+menorSueldo);
 	}
 
 	private static double importeHorasExtra() {
 		System.out.println("Cual es el importe de las horas extra?");
-		
+
 		return sc.nextDouble();
 	}
 
