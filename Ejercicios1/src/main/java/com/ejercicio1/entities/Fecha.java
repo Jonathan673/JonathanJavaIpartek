@@ -80,6 +80,20 @@ public class Fecha {
 
 		}
 	}
+	//Metodo del ejercicio 10 que nos devuelve true o false en funcion de la fecha que le hemos pasado por parametro
+	public boolean esMayorQue(Fecha f){
+		boolean esMayorQue = false;
+        if(año > f.año) {
+        	esMayorQue = true;
+        }
+        else if(año==f.año && mes > f.mes) {
+        	esMayorQue = true;
+        }
+        else if(año==f.año && mes == f.mes && dia > f.dia) {
+        	esMayorQue = true;
+        }
+		return esMayorQue;
+	}
 
 	// Método toString para mostrar la fecha
 	@Override
