@@ -130,7 +130,7 @@ public class Empleado {
 			sb.append("Casado: No\n");
 		}
 		sb.append("Número de Hijos: "+ numeroHijos);
-		return sb.toString();
+		return sb.toString() + "\n sueldo horas extra: "+SueldoHorasExtra() + "\n salario:"+ (SueldoBruto()-Retenciones());
 	}
 
 }

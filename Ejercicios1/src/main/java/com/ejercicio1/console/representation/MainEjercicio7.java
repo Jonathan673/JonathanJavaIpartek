@@ -22,7 +22,6 @@ public class MainEjercicio7 {
 		String casado;
 		int numeroHijos;
 		int contador = 0;
-		double importe;
 
 		System.out.println("Indique el número de empleados que desea introducir (máximo 20): ");
 		numeroEmpleados = sc.nextInt();
@@ -81,38 +80,64 @@ public class MainEjercicio7 {
 //		}
 
 		MayorMenorSueldo();
-//		MayorMenorSueldoPorHorasExtra();
-//		EmpleadosListadosMenorAMayorSueldo();
+		MayorMenorSueldoPorHorasExtra();
+		EmpleadosListadosMenorAMayorSueldo();
 	}
 
 	private static void EmpleadosListadosMenorAMayorSueldo() {
-		// TODO Auto-generated method stub
+		Empleado auxiliar;
+		for (int i = 0; i < listaEmpleados.length; i++) {
+			for (int j = 0; j < listaEmpleados.length - i - 1; j++) {
+				if ((listaEmpleados[j + 1].SueldoBruto()
+						- listaEmpleados[j + 1].Retenciones()) < (listaEmpleados[j].SueldoBruto()
+								- listaEmpleados[j].Retenciones())) {
+					auxiliar = listaEmpleados[j];
+					listaEmpleados[j] = listaEmpleados[j + 1];
+					listaEmpleados[j + 1] = auxiliar;
+				}
 
+			}
+		}
+		System.out.println("Lista ordenada de menor a mayor sueldo");
+		for (Empleado e : listaEmpleados) {
+			System.out.println(e);
+		}
 	}
 
 	private static void MayorMenorSueldoPorHorasExtra() {
 		// TODO Auto-generated method stub
+		Empleado mayorSueldoHorasExtra = listaEmpleados[0];
+		Empleado menorSueldoHorasExtra = listaEmpleados[0];
 
+		for (int i = 1; i < listaEmpleados.length; i++) {
+			if (listaEmpleados[i].SueldoHorasExtra() > mayorSueldoHorasExtra.SueldoHorasExtra()) {
+				mayorSueldoHorasExtra = listaEmpleados[i];
+			}
+			if (listaEmpleados[i].SueldoHorasExtra() < mayorSueldoHorasExtra.SueldoHorasExtra()) {
+				menorSueldoHorasExtra = listaEmpleados[i];
+			}
+		}
+		System.out.println("El empleado que mas gana por las horas extra es: " + mayorSueldoHorasExtra + " "
+				+ "\ny el que menos gana es: " + menorSueldoHorasExtra);
 	}
 
 	private static void MayorMenorSueldo() {
 		// TODO Auto-generated method stub
 		Empleado mayorSueldo = listaEmpleados[0];
 		Empleado menorSueldo = listaEmpleados[0];
-		
-		
+
 		for (int i = 1; i < listaEmpleados.length; i++) {
-			if((listaEmpleados[i].SueldoBruto() - listaEmpleados[i].Retenciones()) > 
-					(mayorSueldo.SueldoBruto() - mayorSueldo.Retenciones())) {
+			if ((listaEmpleados[i].SueldoBruto() - listaEmpleados[i].Retenciones()) > (mayorSueldo.SueldoBruto()
+					- mayorSueldo.Retenciones())) {
 				mayorSueldo = listaEmpleados[i];
 			}
-			if((listaEmpleados[i].SueldoBruto() - listaEmpleados[i].Retenciones()) < 
-					(menorSueldo.SueldoBruto() - menorSueldo.Retenciones())) {
+			if ((listaEmpleados[i].SueldoBruto() - listaEmpleados[i].Retenciones()) < (menorSueldo.SueldoBruto()
+					- menorSueldo.Retenciones())) {
 				menorSueldo = listaEmpleados[i];
 			}
 		}
-		System.out.println("El empleado con el salario mas alto es: "+mayorSueldo +" "
-				+ "\ny el que menos gana es: "+menorSueldo);
+		System.out.println("El empleado con el salario mas alto es: " + mayorSueldo + " " + "\ny el que menos gana es: "
+				+ menorSueldo);
 	}
 
 	private static double importeHorasExtra() {

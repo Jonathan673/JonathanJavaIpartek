@@ -3,7 +3,7 @@
     <wb-module deploy-name="amazonia2">
                 
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/"/>
+        <wb-resource deploy-path="/" source-path="/"/>
                 
         <property name="context-root" value="amazonia2"/>
                 
