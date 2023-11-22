@@ -14,6 +14,7 @@ public class Persona {
 		setDireccion(direccion);
 		setCodigoPostal(codigoPostal);
 		setCiudad(ciudad);
+		this.fechaNacimiento = new Fecha();
 		setFechaNacimiento(fechaNacimiento);
 	}
 
@@ -54,7 +55,9 @@ public class Persona {
 	}
 
 	public void setFechaNacimiento(Fecha fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
+		this.fechaNacimiento.setDia(fechaNacimiento.getDia());
+		this.fechaNacimiento.setMes(fechaNacimiento.getMes());
+		this.fechaNacimiento.setAño(fechaNacimiento.getAño());
 	}
 
 	
