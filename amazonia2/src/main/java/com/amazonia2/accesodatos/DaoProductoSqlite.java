@@ -12,6 +12,12 @@ import java.util.ArrayList;
 import com.amazonia2.entidades.Producto;
 
 public class DaoProductoSqlite implements DaoProducto {
+//	private DaoProductoSqlite() {}
+//	private static final DaoProductoSqlite INSTANCIA = new DaoProductoSqlite();
+//	public static DaoProductoSqlite obtenerInstancia() {
+//		return INSTANCIA;
+//	}
+	
 	private static final String SQL_SELECT = "SELECT id, codigo_barras, nombre, precio, fecha_caducidad, unidades FROM productos";
 	private static final String SQL_SELECT_ID = SQL_SELECT + " WHERE id=?";
 	private static final String SQL_SELECT_CADUCADOS = SQL_SELECT + " WHERE fecha_caducidad < ?";
@@ -30,7 +36,7 @@ public class DaoProductoSqlite implements DaoProducto {
 		}
 	}
 
-	public DaoProductoSqlite(String url) {
+	public DaoProductoSqlite(String url, String user, String pass) {
 		this.url = url;
 	}
 
@@ -57,8 +63,7 @@ public class DaoProductoSqlite implements DaoProducto {
 
 	@Override
 	public Producto obtenerPorId(Long id) {
-		try (Connection con = obtenerConexion(); 
-				PreparedStatement pst = con.prepareStatement(SQL_SELECT_ID);) {
+		try (Connection con = obtenerConexion(); PreparedStatement pst = con.prepareStatement(SQL_SELECT_ID);) {
 			pst.setLong(1, id);
 
 			Producto producto;
@@ -78,8 +83,7 @@ public class DaoProductoSqlite implements DaoProducto {
 
 	@Override
 	public Producto insertar(Producto producto) {
-		try (Connection con = obtenerConexion(); 
-				PreparedStatement pst = con.prepareStatement(SQL_INSERT);) {
+		try (Connection con = obtenerConexion(); PreparedStatement pst = con.prepareStatement(SQL_INSERT);) {
 			producto.setId(null);
 			productoAFila(producto, pst);
 
@@ -94,8 +98,7 @@ public class DaoProductoSqlite implements DaoProducto {
 
 	@Override
 	public Producto modificar(Producto producto) {
-		try (Connection con = obtenerConexion(); 
-				PreparedStatement pst = con.prepareStatement(SQL_UPDATE);) {
+		try (Connection con = obtenerConexion(); PreparedStatement pst = con.prepareStatement(SQL_UPDATE);) {
 			productoAFila(producto, pst);
 
 			ejecutarCambio(pst);
@@ -109,8 +112,7 @@ public class DaoProductoSqlite implements DaoProducto {
 
 	@Override
 	public void borrar(Long id) {
-		try (Connection con = obtenerConexion(); 
-				PreparedStatement pst = con.prepareStatement(SQL_DELETE);) {
+		try (Connection con = obtenerConexion(); PreparedStatement pst = con.prepareStatement(SQL_DELETE);) {
 			pst.setLong(1, id);
 
 			ejecutarCambio(pst);
@@ -126,8 +128,7 @@ public class DaoProductoSqlite implements DaoProducto {
 			throw new AccesoDatosException("No se ha proporcionado ningún nombre para la búsqueda");
 		}
 
-		try (Connection con = obtenerConexion(); 
-				PreparedStatement pst = con.prepareStatement(SQL_SELECT_NOMBRE);) {
+		try (Connection con = obtenerConexion(); PreparedStatement pst = con.prepareStatement(SQL_SELECT_NOMBRE);) {
 
 			pst.setString(1, "%" + nombre + "%");
 
@@ -162,8 +163,7 @@ public class DaoProductoSqlite implements DaoProducto {
 			throw new AccesoDatosException("No se ha proporcionado ninguna fecha para la búsqueda");
 		}
 
-		try (Connection con = obtenerConexion(); 
-				PreparedStatement pst = con.prepareStatement(SQL_SELECT_CADUCADOS);) {
+		try (Connection con = obtenerConexion(); PreparedStatement pst = con.prepareStatement(SQL_SELECT_CADUCADOS);) {
 
 			pst.setString(1, fecha.toString());
 
@@ -222,9 +222,10 @@ public class DaoProductoSqlite implements DaoProducto {
 		String codigoBarras = rs.getString("codigo_barras");
 		String nombre = rs.getString("nombre");
 		BigDecimal precio = rs.getBigDecimal("precio");
-		java.sql.Date fecha = rs.getDate("fecha_caducidad");
-		LocalDate fechaCaducidad = fecha != null ? fecha.toLocalDate() : null;
-		Integer unidades = (Integer) rs.getObject("unidades");
+		String sFecha = rs.getString("fecha_caducidad");
+		LocalDate fechaCaducidad = sFecha == null || sFecha.trim().length() == 0 ? null : LocalDate.parse(sFecha);
+		String sUnidades = rs.getString("unidades");
+		Integer unidades = sUnidades == null || sUnidades.trim().length() == 0 ? null: Integer.valueOf(sUnidades);
 
 		return new Producto(id, codigoBarras, nombre, precio, fechaCaducidad, unidades);
 	}
