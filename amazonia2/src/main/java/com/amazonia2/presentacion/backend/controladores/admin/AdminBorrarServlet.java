@@ -1,4 +1,4 @@
-package com.amazonia2.presentacion.backend.controladores;
+package com.amazonia2.presentacion.backend.controladores.admin;
 
 import java.io.IOException;
 
@@ -10,16 +10,17 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/listado")
-public class ListadoServlet extends HttpServlet {
+@WebServlet("/admin/borrar")
+public class AdminBorrarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// response.getWriter().append(Global.UN.listadoProductos().toString());
-
-		var productos = Global.UN.listadoProductos();
-		request.setAttribute("productos", productos);
-		request.getRequestDispatcher("/WEB-INF/vistas/listado.jsp").forward(request, response);
+		String sId = request.getParameter("id");
+		Long id = Long.parseLong(sId);
+		
+		Global.AN.borrarProducto(id);
+		
+		response.sendRedirect(request.getContextPath() + "/admin/listado");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
