@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<footer class="sticky-bottom w-100 text-bg-dark p-2 mt-4 d-flex justify-content-between">
-		<p>&copy;2023 Javier Lete</p>
+		<p>&copy;2023 Jonathan Camacho</p>
 		<ul class="list-unstyled d-flex">
 			<li><a class="text-white p-1" href="#"><i
 					class="bi bi-facebook"></i></a></li>
