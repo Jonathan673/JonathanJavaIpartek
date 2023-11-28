@@ -14,10 +14,10 @@ public class DaoProductoSqlite extends DaoSqlite<Producto> implements DaoProduct
 		super(url);
 	}
 
-	private static final String SQL_INSERT = "INSERT INTO productos (nombre, tipo_planta, precio, unidades) VALUES (?,?,?,?)";
-	private static final String SQL_UPDATE = "UPDATE productos SET nombre=?, tipo_planta=?, precio=?, unidades=? WHERE id=?";
+	private static final String SQL_INSERT = "INSERT INTO productos (nombre, tipo_producto, precio, unidades) VALUES (?,?,?,?)";
+	private static final String SQL_UPDATE = "UPDATE productos SET nombre=?, tipo_producto=?, precio=?, unidades=? WHERE id=?";
 	private static final String SQL_DELETE = "DELETE FROM productos WHERE id=?";
-	private static final String SQL_SELECT = "SELECT id, nombre, tipo_planta, precio, unidades FROM productos";
+	private static final String SQL_SELECT = "SELECT id, nombre, tipo_producto, precio, unidades FROM productos";
 	private static final String SQL_SELECT_ID = SQL_SELECT + " WHERE id=?";
 	private static final String SQL_SELECT_NOMBRE = SQL_SELECT + " WHERE nombre LIKE ?";
 	
@@ -142,7 +142,7 @@ public class DaoProductoSqlite extends DaoSqlite<Producto> implements DaoProduct
 	protected Producto filaAObjeto(ResultSet rs) throws SQLException {
 		Long id = rs.getLong("id");
 		String nombre = rs.getString("nombre");
-		String tipo_planta = rs.getString("codigo_barras");
+		String tipo_planta = rs.getString("tipo_producto");
 		BigDecimal precio = rs.getBigDecimal("precio");
 		String sUnidades = rs.getString("unidades");
 		Integer unidades = sUnidades == null || sUnidades.trim().length() == 0 ? null: Integer.valueOf(sUnidades);
