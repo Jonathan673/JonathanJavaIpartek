@@ -1,12 +1,15 @@
 package com.floristeria.globals;
 
+import com.floristeria.businesslogic.AdminNegocio;
+import com.floristeria.businesslogic.UsuarioNegocio;
 import com.floristeria.dataaccess.DaoProducto;
+import com.floristeria.dataaccess.DaoUsuario;
 
 
 public interface Fabrica {
 	DaoProducto obtenerDaoProducto();
-//	DaoUsuario obtenerDaoUsuario();
-//
-//	UsuarioNegocio obtenerUsuarioNegocio();
-//	AdminNegocio obtenerAdminNegocio();
+	DaoUsuario obtenerDaoUsuario();
+
+	UsuarioNegocio obtenerUsuarioNegocio();
+	AdminNegocio obtenerAdminNegocio();
 }
