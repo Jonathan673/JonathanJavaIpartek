@@ -5,12 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
-import org.apache.jasper.tagplugins.jstl.core.Remove;
-
-import com.floristeria.dataaccess.AccesoDatosException;
 import com.floristeria.entities.Producto;
 
 public class DaoProductoSqlite extends DaoSqlite<Producto> implements DaoProducto{
@@ -18,8 +14,8 @@ public class DaoProductoSqlite extends DaoSqlite<Producto> implements DaoProduct
 		super(url);
 	}
 
-	private static final String SQL_INSERT = "INSERT INTO productos (codigo_barras, nombre, precio, fecha_caducidad, unidades) VALUES (?,?,?,?,?)";
-	private static final String SQL_UPDATE = "UPDATE productos SET codigo_barras=?, nombre=?, precio=?, fecha_caducidad=?, unidades=? WHERE id=?";
+	private static final String SQL_INSERT = "INSERT INTO productos (nombre, tipo_planta, precio, unidades) VALUES (?,?,?,?)";
+	private static final String SQL_UPDATE = "UPDATE productos SET nombre=?, tipo_planta=?, precio=?, unidades=? WHERE id=?";
 	private static final String SQL_DELETE = "DELETE FROM productos WHERE id=?";
 	private static final String SQL_SELECT = "SELECT id, nombre, tipo_planta, precio, unidades FROM productos";
 	private static final String SQL_SELECT_ID = SQL_SELECT + " WHERE id=?";
@@ -69,7 +65,7 @@ public class DaoProductoSqlite extends DaoSqlite<Producto> implements DaoProduct
 	@Override
 	public Producto InsertarProducto(Producto producto) {
 		try (Connection con = obtenerConexion();
-				PreparedStatement pst = con.prepareStatement(SQL_DELETE);
+				PreparedStatement pst = con.prepareStatement(SQL_INSERT);
 				ResultSet rs = pst.executeQuery()) {
 			objetoAFila(producto, pst);
 
@@ -84,7 +80,7 @@ public class DaoProductoSqlite extends DaoSqlite<Producto> implements DaoProduct
 	@Override
 	public Producto ModificarProducto(Producto producto) {
 		try (Connection con = obtenerConexion();
-				PreparedStatement pst = con.prepareStatement(SQL_DELETE);
+				PreparedStatement pst = con.prepareStatement(SQL_UPDATE);
 				ResultSet rs = pst.executeQuery()) {
 			objetoAFila(producto, pst);
 
@@ -114,8 +110,32 @@ public class DaoProductoSqlite extends DaoSqlite<Producto> implements DaoProduct
 
 	@Override
 	public Iterable<Producto> obtenerPorNombreParcial(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
+		if (nombre == null) {
+			throw new AccesoDatosException("No se ha proporcionado ningún nombre para la búsqueda");
+		}
+
+		try (Connection con = obtenerConexion(); PreparedStatement pst = con.prepareStatement(SQL_SELECT_NOMBRE);) {
+
+			pst.setString(1, "%" + nombre + "%");
+
+			ArrayList<Producto> productos;
+
+			try (ResultSet rs = pst.executeQuery()) {
+				productos = new ArrayList<Producto>();
+
+				Producto producto;
+
+				while (rs.next()) {
+					producto = filaAObjeto(rs);
+
+					productos.add(producto);
+				}
+
+				return productos;
+			}
+		} catch (SQLException e) {
+			throw new AccesoDatosException("Error en la consulta del nombre " + nombre, e);
+		}
 	}
 
 	@Override
