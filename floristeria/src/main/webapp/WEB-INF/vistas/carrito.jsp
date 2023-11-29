@@ -11,7 +11,7 @@
 				<tr>
 					<th>Nombre</th>
 					<th>Precio</th>
-					<th>Fecha de caducidad</th>
+					<th>Tipo de Producto</th>
 					<th>Unidades</th>
 					<th>OPCIONES</th>
 				</tr>
@@ -22,7 +22,7 @@
 					<tr>
 						<td>${p.nombre}</td>
 						<td>${p.precio}</td>
-						<td>${p.fechaCaducidad}</td>
+						<td>${p.productTipe}</td>
 						<td>
 							<input type="hidden" name="id" value="${p.id}">
 							<div class="input-group" style="width: 10rem">

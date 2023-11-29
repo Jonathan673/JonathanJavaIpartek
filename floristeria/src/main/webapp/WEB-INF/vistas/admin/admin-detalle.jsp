@@ -13,11 +13,11 @@
 		</div>
 
 		<div class="row mb-3">
-			<label for="codigo-barras" class="col-sm-2 col-form-label">Código
-				de barras</label>
+			<label for="tipo-producto" class="col-sm-2 col-form-label">Tipo
+				Producto</label>
 			<div class="col-sm">
-				<input type="number" class="form-control" id="codigo-barras"
-					name="codigo-barras" value="${producto.codigoBarras}">
+				<input type="text" class="form-control" id="tipo-producto"
+					name="tipo-producto" value="${producto.productTipe}">
 			</div>
 		</div>
 
@@ -36,14 +36,14 @@
 			</div>
 		</div>
 
-		<div class="row mb-3">
+<%-- 		<div class="row mb-3">
 			<label for="fecha-caducidad" class="col-sm-2 col-form-label">Fecha
 				de caducidad</label>
 			<div class="col-sm">
 				<input type="date" class="form-control" id="fecha-caducidad"
 					name="fecha-caducidad" value="${producto.fechaCaducidad}">
 			</div>
-		</div>
+		</div> --%>
 		<div class="row mb-3">
 			<label for="unidades" class="col-sm-2 col-form-label">Unidades</label>
 			<div class="col-sm">

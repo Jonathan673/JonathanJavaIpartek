@@ -45,18 +45,21 @@ public class DaoProductoSqlite extends DaoSqlite<Producto> implements DaoProduct
 	@Override
 	public Producto ObtenerPorId(Long id) {
 		try (Connection con = obtenerConexion();
-				PreparedStatement pst = con.prepareStatement(SQL_SELECT_ID);
-				ResultSet rs = pst.executeQuery()) {
+				PreparedStatement pst = con.prepareStatement(SQL_SELECT_ID)) {
 			pst.setLong(1, id);
 
-			Producto producto = null;
+			Producto producto;
+			try (ResultSet rs = pst.executeQuery()) {
+				producto = null;
 
-			if (rs.next()) {
-				producto = filaAObjeto(rs);
+				if (rs.next()) {
+					producto = filaAObjeto(rs);
+				}
 
+				return producto;
 			}
-
-			return producto;
+			
+			
 		} catch (SQLException e) {
 			throw new AccesoDatosException("Error en la consulta del id " + id, e);
 		}
@@ -65,13 +68,13 @@ public class DaoProductoSqlite extends DaoSqlite<Producto> implements DaoProduct
 	@Override
 	public Producto InsertarProducto(Producto producto) {
 		try (Connection con = obtenerConexion();
-				PreparedStatement pst = con.prepareStatement(SQL_INSERT);
-				ResultSet rs = pst.executeQuery()) {
+				PreparedStatement pst = con.prepareStatement(SQL_INSERT);) {
+			producto.setId(null);
 			objetoAFila(producto, pst);
 
 			ejecutarCambio(pst);
 
-			return null;
+			return producto;
 		} catch (SQLException e) {
 			throw new AccesoDatosException("Error en la insercion  " + producto, e);
 		}
@@ -80,14 +83,13 @@ public class DaoProductoSqlite extends DaoSqlite<Producto> implements DaoProduct
 	@Override
 	public Producto ModificarProducto(Producto producto) {
 		try (Connection con = obtenerConexion();
-				PreparedStatement pst = con.prepareStatement(SQL_UPDATE);
-				ResultSet rs = pst.executeQuery()) {
+				PreparedStatement pst = con.prepareStatement(SQL_UPDATE);) {
 			objetoAFila(producto, pst);
 
 			ejecutarCambio(pst);
 
 			
-			return null;
+			return producto;
 		} catch (SQLException e) {
 			throw new AccesoDatosException("Error en la modificacion " + producto, e);
 		}
@@ -142,12 +144,12 @@ public class DaoProductoSqlite extends DaoSqlite<Producto> implements DaoProduct
 	protected Producto filaAObjeto(ResultSet rs) throws SQLException {
 		Long id = rs.getLong("id");
 		String nombre = rs.getString("nombre");
-		String tipo_planta = rs.getString("tipo_producto");
+		String tipo_producto = rs.getString("tipo_producto");
 		BigDecimal precio = rs.getBigDecimal("precio");
 		String sUnidades = rs.getString("unidades");
 		Integer unidades = sUnidades == null || sUnidades.trim().length() == 0 ? null: Integer.valueOf(sUnidades);
 
-		return new Producto(id, nombre, tipo_planta, precio, unidades);
+		return new Producto(id, nombre, tipo_producto, precio, unidades);
 	}
 
 	@Override

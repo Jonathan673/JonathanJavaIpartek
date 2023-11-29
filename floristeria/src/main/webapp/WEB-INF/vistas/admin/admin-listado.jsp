@@ -8,10 +8,9 @@
 		<thead class="table-dark">
 			<tr>
 				<th>Id</th>
-				<th>Código de barras</th>
 				<th>Nombre</th>
 				<th>Precio</th>
-				<th>Fecha de caducidad</th>
+				<th>Tipo Producto</th>
 				<th>Unidades</th>
 				<th>OPCIONES</th>
 			</tr>
@@ -21,10 +20,9 @@
 			<c:forEach items="${productos}" var="p">
 				<tr>
 					<th>${p.id}</th>
-					<td>${p.codigoBarras}</td>
 					<td>${p.nombre}</td>
 					<td>${p.precio}</td>
-					<td>${p.fechaCaducidad}</td>
+					<td>${p.productTipe}</td>
 					<td>${p.unidades}</td>
 					<td>
 						<a class="btn btn-sm btn-primary" href="admin/detalle?id=${p.id}">Editar</a>
@@ -35,7 +33,6 @@
 		</tbody>
 		<tfoot class="table-dark">
 			<tr>
-				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>

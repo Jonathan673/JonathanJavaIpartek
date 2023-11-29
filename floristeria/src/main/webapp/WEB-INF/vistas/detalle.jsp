@@ -21,7 +21,7 @@
 						<a class="btn btn-primary" href="carrito?id=${producto.id}">Añadir al carrito</a>
 					</div>
 					<p class="card-text">
-						<small class="text-body-secondary">${producto.fechaCaducidad}</small>
+						<small class="text-body-secondary">${producto.productTipe}</small>
 					</p>
 				</div>
 				<a class="btn btn-secondary" href="listado">Volver al listado</a>

@@ -33,7 +33,7 @@ public class AdminDetalleServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String sId = request.getParameter("id");
 		String nombre = request.getParameter("nombre");
-		String tipo_producto = request.getParameter("tipo_producto");
+		String tipo_producto = request.getParameter("productTipe");
 		String sPrecio = request.getParameter("precio");
 		String sUnidades = request.getParameter("unidades");
 
