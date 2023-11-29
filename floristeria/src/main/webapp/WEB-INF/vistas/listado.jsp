@@ -26,7 +26,7 @@
 						<a class="btn btn-primary w-100 stretched-link" href="detalle?id=${p.id}">Ver detalle</a>
 					</div>
 					<div class="card-footer">
-						<small class="text-body-secondary">${p.fechaCaducidad}</small>
+						<small class="text-body-secondary">${p.productTipe}</small>
 					</div>
 				</div>
 			</div>
