@@ -17,8 +17,8 @@ public class ListadoProveedoresServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// response.getWriter().append(Global.UN.listadoProductos().toString());
 
-		var productos = Global.UN.listadoProductos();
-		request.setAttribute("productos", productos);
+		var proveedores = Global.AN.listadoProductos();
+		request.setAttribute("proveedores", proveedores);
 		request.getRequestDispatcher("/WEB-INF/vistas/listado-proveedores.jsp").forward(request, response);
 	}
 
