@@ -32,12 +32,32 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-sm-0">
 					<li class="nav-item"><a class="nav-link" href="listado">Principal</a></li>
-					<li class="nav-item"><a class="nav-link" href="listado">Complementos</a></li>
-					<li class="nav-item"><a class="nav-link" href="listado">Servicios</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Complementos</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Servicios</a></li>
 				</ul>
 				<ul class="navbar-nav mb-2 mb-sm-0">
 					<c:if test="${sessionScope.usuario.rol.id == 1}">
 						<li class="nav-item"><a class="nav-link" href="admin/listado">Administración</a></li>
+						<!--  -->
+						<li>
+							<div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1"
+								id="offcanvasDarkNavbar"
+								aria-labelledby="offcanvasDarkNavbarLabel">
+								<div class="offcanvas-header">
+									<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark
+										offcanvas</h5>
+									<button type="button" class="btn-close btn-close-white"
+										data-bs-dismiss="offcanvas" aria-label="Close"></button>
+								</div>
+								<div class="offcanvas-body">
+									<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+										<li class="nav-item"><a class="nav-link" href="listado-pedidos">Pedidos</a></li>
+										<li class="nav-item"><a class="nav-link" href="listado-proveedores">Proveedores</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<!--  -->
 					</c:if>
 					<li class="navbar-text">${sessionScope.usuario.nombre}</li>
 
@@ -58,12 +78,4 @@
 			</div>
 		</div>
 	</nav>
-	<nav class="navbar bg-body-tertiary">
-		<div class="container-fluid">
-			<form class="d-flex" role="search">
-				<input class="form-control mb-2 mb-sm-0" type="search" placeholder="Search"
-					aria-label="Search">
-				<button class="btn btn-outline-success" type="submit">Search</button>
-			</form>
-		</div>
-	</nav>
+	<!--  -->

@@ -9,6 +9,7 @@ import java.util.Properties;
 import com.floristeria.businesslogic.AdminNegocio;
 import com.floristeria.businesslogic.UsuarioNegocio;
 import com.floristeria.dataaccess.DaoProducto;
+import com.floristeria.dataaccess.DaoProveedor;
 import com.floristeria.dataaccess.DaoUsuario;
 
 //import com.amazonia2.accesodatos.DaoProducto;
@@ -21,6 +22,7 @@ public class FabricaImpl implements Fabrica {
 	private final UsuarioNegocio usuarioNegocio;
 	private final AdminNegocio adminNegocio;
 	private final DaoUsuario daoUsuario;
+	private final DaoProveedor daoProveedor;
 
 	public FabricaImpl(String rutaFicheroProperties) {
 		try {
@@ -32,6 +34,7 @@ public class FabricaImpl implements Fabrica {
 			// le hemos pasado
 			String tipoDaoUsuario = props.getProperty("accesodatos.tipo.usuario");
 			String tipoDaoProducto = props.getProperty("accesodatos.tipo.producto");
+			String tipoDaoProveedor = props.getProperty("accesodatos.tipo.proveedor");
 			String url = props.getProperty("accesodatos.url");
 
 			String user = props.getProperty("accesodatos.user");
@@ -50,6 +53,10 @@ public class FabricaImpl implements Fabrica {
 			usuarioNegocio = (UsuarioNegocio)objeto;
 
 			adminNegocio = (AdminNegocio)Class.forName(tipoAdminNegocio).getDeclaredConstructor().newInstance();
+			
+			daoProveedor = (DaoProveedor) Class.forName(tipoDaoProveedor)
+					.getDeclaredConstructor(String.class, String.class, String.class)
+					.newInstance(url, user, pass);
 
 		} catch (IOException | ClassNotFoundException | InstantiationException | IllegalAccessException
 				| IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
@@ -75,6 +82,11 @@ public class FabricaImpl implements Fabrica {
 	@Override
 	public DaoUsuario obtenerDaoUsuario() {
 		return daoUsuario;
+	}
+
+	@Override
+	public DaoProveedor obtenerDaoProveedor() {
+		return daoProveedor;
 	}
 
 }
