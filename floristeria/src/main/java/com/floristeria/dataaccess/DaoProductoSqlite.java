@@ -99,8 +99,7 @@ public class DaoProductoSqlite extends DaoSqlite<Producto> implements DaoProduct
 	@Override
 	public void EliminarProducto(Long id) {
 		try (Connection con = obtenerConexion();
-				PreparedStatement pst = con.prepareStatement(SQL_DELETE);
-				ResultSet rs = pst.executeQuery()) {
+				PreparedStatement pst = con.prepareStatement(SQL_DELETE);) {
 			pst.setLong(1, id);
 
 			ejecutarCambio(pst);

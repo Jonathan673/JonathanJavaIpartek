@@ -13,11 +13,11 @@
 		</div>
 
 		<div class="row mb-3">
-			<label for="tipo-producto" class="col-sm-2 col-form-label">Tipo
+			<label for="productTipe" class="col-sm-2 col-form-label">Tipo
 				Producto</label>
 			<div class="col-sm">
-				<input type="text" class="form-control" id="tipo-producto"
-					name="tipo-producto" value="${producto.productTipe}">
+				<input type="text" class="form-control" id="productTipe"
+					name="productTipe" value="${producto.productTipe}">
 			</div>
 		</div>
 

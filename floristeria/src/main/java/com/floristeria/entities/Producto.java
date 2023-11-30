@@ -3,7 +3,6 @@ package com.floristeria.entities;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import com.floristeria.enumlists.ProductTipe;
 
 public class Producto {
 	// productos que estarán disponibles en la floristeria, necesita un id, nombre,
@@ -17,12 +16,15 @@ public class Producto {
 
 	
 	//Constructores
-	public Producto(long id, String nombre, String tipoProducto, BigDecimal precio, Integer unidades) {
+	public Producto(Long id, String nombre, String tipoProducto, BigDecimal precio, Integer unidades) {
 		setId(id);
 		setNombre(nombre);
 		setProductTipe(tipoProducto);
 		setPrecio(precio);
 		setUnidades(unidades);
+	}
+	public Producto( String nombre, String tipoProducto, BigDecimal precio, Integer unidades) {
+		this(null, nombre, tipoProducto, precio, unidades);
 	}
 
 	public Producto() {
@@ -62,6 +64,9 @@ public class Producto {
 	}
 
 	public void setProductTipe(String tipoProducto) {
+		if(tipoProducto == null) {
+			tipoProducto = "Complemento";
+		}
 		this.productTipe = tipoProducto;
 	}
 
