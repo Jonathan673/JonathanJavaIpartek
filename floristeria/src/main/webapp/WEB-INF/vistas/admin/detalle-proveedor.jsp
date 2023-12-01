@@ -22,6 +22,11 @@
 					<p class="card-text">
 						<small class="text-body-secondary"><span>Tf: </span>${proveedor.numeroTelefono}</small>
 					</p>
+					<a class="btn btn-sm btn-primary" href="admin/gestion-proveedor?id=${proveedor.id}">Editar</a>
+					<a
+						onclick="return confirm('¿Estás seguro de borrar el proveedor ${proveedor.nombre}?')"
+						class="btn btn-sm btn-danger" href="admin/borrar-proveedor?id=${proveedor.id}">Eliminar Proveedor</a>
+
 				</div>
 				<a class="btn btn-secondary" href="admin/listado-proveedores">Volver
 					al listado</a>

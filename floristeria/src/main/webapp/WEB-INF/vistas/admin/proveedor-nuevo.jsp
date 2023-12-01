@@ -8,7 +8,7 @@
 		<div class="row mb-3">
 			<label for="id" class="col-sm-2 col-form-label">Id</label>
 			<div class="col-sm">
-				<input type="number" readonly class="form-control" id="id" name="id"
+				<input type="number" type="hidden" readonly class="form-control" id="id" name="id"
 					value="${proveedor.id}">
 			</div>
 		</div>
@@ -48,7 +48,7 @@
 				<button type="submit" class="btn btn-primary">Guardar</button>
 				<button type="reset" class="btn btn-warning">Restaurar
 					valores originales</button>
-				<a class="btn btn-danger" href="admin/gestion-proveedor">Vaciar formulario</a>
+				<!-- <a class="btn btn-danger" href="admin/gestion-proveedor">Vaciar formulario</a> -->
 			</div>
 		</div>
 	</form>
