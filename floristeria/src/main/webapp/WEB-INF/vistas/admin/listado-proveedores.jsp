@@ -9,9 +9,11 @@
 			<li>${p}</li>
 		</c:forEach>
 	</ul> --%>
-<h1>Proveedores</h1>
+	<h1>Proveedores</h1>
 	<div
 		class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-4">
+		<a class="btn btn-sm btn-primary" href="admin/gestion-proveedor">Añadir
+				nuevo proveedor</a>
 		<c:forEach items="${proveedores}" var="p">
 			<div class="col">
 				<div class="card h-100">
@@ -20,19 +22,19 @@
 					<div class="card-body">
 						<h5 class="card-title">${p.nombre}</h5>
 						<ul class="list-group list-group-flush">
-							<%-- <li class="list-group-item">${p.direccion}</li>
-							<li class="list-group-item">${p.numeroTelefono}</li> --%>
+							<li class="list-group-item"><span>Tf: </span>${p.numeroTelefono}</li>
+							<%-- <li class="list-group-item">${p.direccion}</li> --%>
 						</ul>
-						<a class="btn btn-primary w-100 stretched-link" href="detalle?id=${p.id}">Ver detalle</a>
+						<a class="btn btn-primary w-100 stretched-link"
+							href="admin/detalle-proveedor?id=${p.id}">Ver detalle</a>
 					</div>
 					<div class="card-footer">
-						<%-- <small class="text-body-secondary">${p.productTipe}</small> --%>
+						<small class="text-body-secondary">${p.webSite}</small>
 					</div>
 				</div>
 			</div>
 		</c:forEach>
 	</div>
-
 </main>
 
 <%@ include file="/WEB-INF/vistas/includes/pie.jsp"%>
