@@ -1,4 +1,4 @@
-package com.floristeria.presentation.backend.controladores;
+package com.floristeria.presentation.backend.controladores.admin;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/listado-pedidos")
+@WebServlet("/admin/listado-pedidos")
 public class ListadoPedidosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -19,7 +19,7 @@ public class ListadoPedidosServlet extends HttpServlet {
 
 		var productos = Global.UN.listadoProductos();
 		request.setAttribute("productos", productos);
-		request.getRequestDispatcher("/WEB-INF/vistas/listado-pedidos.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/vistas/admin/listado-pedidos.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -15,7 +15,7 @@ public class DaoProveedorSqlite extends DaoSqlite<Proveedor> implements DaoProve
 	private static final String SQL_INSERT = "INSERT INTO proveedores (nombre, direccion, numeroTelefono, web) VALUES (?,?,?,?)";
 	private static final String SQL_UPDATE = "UPDATE proveedores SET nombre=?, direccion=?, numeroTelefono=?, web=? WHERE id=?";
 	private static final String SQL_DELETE = "DELETE FROM proveedores WHERE id=?";
-	private static final String SQL_SELECT = "SELECT id, nombre, direccion, numeroTelefono, web FROM proveedoress";
+	private static final String SQL_SELECT = "SELECT id, nombre, direccion, numeroTelefono, web FROM proveedores";
 	private static final String SQL_SELECT_ID = SQL_SELECT + " WHERE id=?";
 	
 	
@@ -120,7 +120,7 @@ public class DaoProveedorSqlite extends DaoSqlite<Proveedor> implements DaoProve
 		Long id = rs.getLong("id");
 		String nombre = rs.getString("nombre");
 		String direccion = rs.getString("direccion");
-		Integer numeroTelefono = rs.getInt("precio");
+		Integer numeroTelefono = rs.getInt("numeroTelefono");
 		String web = rs.getString("web");
 
 		return new Proveedor(id, nombre, direccion, numeroTelefono, web);

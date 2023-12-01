@@ -51,8 +51,8 @@
 								</div>
 								<div class="offcanvas-body">
 									<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-										<li class="nav-item"><a class="nav-link" href="listado-pedidos">Pedidos</a></li>
-										<li class="nav-item"><a class="nav-link" href="listado-proveedores">Proveedores</a></li>
+										<li class="nav-item"><a class="nav-link" href="admin/listado-pedidos">Pedidos</a></li>
+										<li class="nav-item"><a class="nav-link" href="admin/listado-proveedores">Proveedores</a></li>
 									</ul>
 								</div>
 							</div>
