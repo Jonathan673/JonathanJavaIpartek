@@ -6,10 +6,6 @@
     <persistence-unit name="com.amazonia2.entidades">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>com.amazonia2.entidades.Producto</class>
-        <class>com.amazonia2.entidades.Usuario</class>
-        <class>com.amazonia2.entidades.Rol</class>
-
         <properties>
             <!-- Database connection settings -->
             <property name="jakarta.persistence.jdbc.driver" value="org.sqlite.JDBC" />
