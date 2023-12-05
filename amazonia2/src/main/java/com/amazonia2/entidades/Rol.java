@@ -1,47 +1,39 @@
 package com.amazonia2.entidades;
 
-import java.util.Objects;
+import java.util.Set;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
+@Entity
+@Table(name = "roles")
 public class Rol {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@NotNull
+	@Size(min = 2, max = 20)
 	private String nombre;
 	
-	public Rol(Long id, String nombre) {
-		setId(id);
-		setNombre(nombre);
-	}
-
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, nombre);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Rol other = (Rol) obj;
-		return Objects.equals(id, other.id) && Objects.equals(nombre, other.nombre);
-	}
-	@Override
-	public String toString() {
-		return "Rol [id=" + id + ", nombre=" + nombre + "]";
-	} 
-	
-	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToMany(mappedBy = "rol")
+	private Set<Usuario> usuarios;
 }

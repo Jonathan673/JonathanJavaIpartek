@@ -2,109 +2,53 @@ package com.amazonia2.entidades;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Objects;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
+@Entity
+@Table(name = "productos")
 public class Producto {
-	private static final Integer UNIDADES_POR_DEFECTO = null;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotNull
+	@Pattern(regexp = "^\\d{10}$", message = "debe tener 10 dígitos")
+	@Size(min = 10, max = 10, message = "debe ser 10 caracteres exactos")
+	@Column(name = "codigo_barras")
 	private String codigoBarras;
+	
+	@NotNull
+	@Size(min = 2, max = 50)
 	private String nombre;
+	
+	@NotNull
+	@Min(0)
 	private BigDecimal precio;
+	
+	@Future
+	@Column(name = "fecha_caducidad")
 	private LocalDate fechaCaducidad;
+	
+	@NotNull
+	@Min(0)
 	private Integer unidades;
-	
-	public Producto(Long id, String codigoBarras, String nombre, BigDecimal precio, LocalDate fechaCaducidad,
-			Integer unidades) {
-		setId(id);
-		setCodigoBarras(codigoBarras);
-		setNombre(nombre);
-		setPrecio(precio);
-		setFechaCaducidad(fechaCaducidad);
-		setUnidades(unidades);
-	}
-
-	public Producto(String codigoBarras, String nombre, BigDecimal precio, LocalDate fechaCaducidad, Integer unidades) {
-		this(null, codigoBarras, nombre, precio, fechaCaducidad, unidades);
-	}
-	
-	public Producto(String nombre, BigDecimal precio, LocalDate fechaCaducidad, Integer unidades) {
-		this(null, null, nombre, precio, fechaCaducidad, unidades);
-	}
-
-	public Producto(String nombre, BigDecimal precio, LocalDate fechaCaducidad) {
-		this(null, null, nombre, precio, fechaCaducidad, UNIDADES_POR_DEFECTO);
-	}
-
-	public Producto(String nombre, BigDecimal precio, Integer unidades) {
-		this(null, null, nombre, precio, null, unidades);
-	}
-
-	public Producto(String nombre, BigDecimal precio) {
-		this(null, null, nombre, precio, null, UNIDADES_POR_DEFECTO);
-	}
-	
-
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getCodigoBarras() {
-		return codigoBarras;
-	}
-
-	public void setCodigoBarras(String codigoBarras) {
-		this.codigoBarras = codigoBarras;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public BigDecimal getPrecio() {
-		return precio;
-	}
-	public void setPrecio(BigDecimal precio) {
-		this.precio = precio;
-	}
-	public LocalDate getFechaCaducidad() {
-		return fechaCaducidad;
-	}
-	public void setFechaCaducidad(LocalDate fechaCaducidad) {
-		this.fechaCaducidad = fechaCaducidad;
-	}
-	public Integer getUnidades() {
-		return unidades;
-	}
-	public void setUnidades(Integer unidades) {
-		this.unidades = unidades;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(codigoBarras, id, nombre);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Producto other = (Producto) obj;
-		return Objects.equals(codigoBarras, other.codigoBarras) && Objects.equals(id, other.id)
-				&& Objects.equals(nombre, other.nombre);
-	}
-
-	@Override
-	public String toString() {
-		return "Producto [id=" + id + ", codigoBarras=" + codigoBarras + ", nombre=" + nombre + ", precio=" + precio
-				+ ", fechaCaducidad=" + fechaCaducidad + ", unidades=" + unidades + "]";
-	}
 }
