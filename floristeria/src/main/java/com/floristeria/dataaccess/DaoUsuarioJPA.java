@@ -11,7 +11,12 @@ public class DaoUsuarioJPA extends DaoJPA implements DaoUsuario {
 
 	@Override
 	public Usuario obtenerPorEmail(String email) {
-		return (Usuario) transaccion(em -> em.find(Usuario.class, email));
+		//return (Usuario) transaccion(em -> em.find(Usuario.class, email));
+		
+		//Quiero el usuario que, de la tabla usuarios, contenga el email que te paso. 
+		//Me pasas el primer resultado y si no que sea nulo.
+		return (Usuario) transaccion(em -> em.createQuery("from Usuario u where u.email = ?1", Usuario.class)
+				.setParameter(1, email).getResultStream().findFirst().orElse(null));
 	}
 
 }
