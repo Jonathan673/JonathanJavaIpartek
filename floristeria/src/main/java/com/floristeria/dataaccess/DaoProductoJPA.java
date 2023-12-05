@@ -5,7 +5,7 @@ import com.floristeria.entities.Producto;
 
 public class DaoProductoJPA extends DaoJPA implements DaoProducto {
 
-	protected DaoProductoJPA(String ignorado1, String ignorado2, String ignorado3) {
+	public DaoProductoJPA(String ignorado1, String ignorado2, String ignorado3) {
 		super(ignorado1, ignorado2, ignorado3);
 	}
 

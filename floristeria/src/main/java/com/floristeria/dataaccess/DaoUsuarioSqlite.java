@@ -38,7 +38,7 @@ public class DaoUsuarioSqlite extends DaoSqlite<Usuario> implements DaoUsuario {
 
 	@Override
 	protected Usuario filaAObjeto(ResultSet rs) throws SQLException {
-		Rol rol = new Rol(rs.getLong("rol_id"), rs.getString("rol_nombre"));
+		Rol rol = new Rol();
 		return new Usuario(rs.getLong("id"), rs.getString("nombre"), rs.getString("email"), rs.getString("password"),
 				rol);
 	}

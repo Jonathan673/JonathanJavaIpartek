@@ -1,7 +1,11 @@
 package com.floristeria.entities;
 
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +16,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @Entity
+@Table(name = "proveedores")
 public class Proveedor {
+	@Id
 	private Long id;
 	private String nombre;
 	private String direccion;

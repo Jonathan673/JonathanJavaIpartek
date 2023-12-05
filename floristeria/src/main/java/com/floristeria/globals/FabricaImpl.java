@@ -12,11 +12,6 @@ import com.floristeria.dataaccess.DaoProducto;
 import com.floristeria.dataaccess.DaoProveedor;
 import com.floristeria.dataaccess.DaoUsuario;
 
-//import com.amazonia2.accesodatos.DaoProducto;
-//import com.amazonia2.accesodatos.DaoUsuario;
-//import com.amazonia2.logicanegocio.AdminNegocio;
-//import com.amazonia2.logicanegocio.UsuarioNegocio;
-
 public class FabricaImpl implements Fabrica {
 	private final DaoProducto daoProducto;
 	private final UsuarioNegocio usuarioNegocio;
