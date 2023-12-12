@@ -15,17 +15,16 @@ public class IndexController {
 	@Autowired
 	private UsuarioNegocio negocio;
 	
-	@ResponseBody
+//	@ResponseBody
 	@GetMapping("/index")
 	public String index(Model modelo) {
 		modelo.addAttribute("productos", negocio.listadoProductos());
 		return "index";
-		//return "index";
 	}
-	@ResponseBody
-	@GetMapping("/detalle/{id}")
-	public String hola(Model modelo, Long id) {
+//	@ResponseBody
+	@GetMapping("/detalle")
+	public String detalle(Model modelo, Long id) {
 		modelo.addAttribute("productos", negocio.detalleProducto(id));
-		return negocio.detalleProducto(id).toString();
+		return "detalle";
 	}
 }
