@@ -1,6 +1,7 @@
 package com.floristeria2sprint.logicanegocio;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import com.floristeria2sprint.accesodatos.DaoProducto;
@@ -8,6 +9,7 @@ import com.floristeria2sprint.entidades.Producto;
 import com.floristeria2sprint.entidades.Usuario;
 
 @Component
+@Primary
 class UsuarioNegocioImpl implements UsuarioNegocio {
 
 	@Autowired
