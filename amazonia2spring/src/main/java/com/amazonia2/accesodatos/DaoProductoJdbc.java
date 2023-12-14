@@ -27,15 +27,14 @@ class DaoProductoJdbc implements DaoProducto {
 
 	@Autowired
 	private JdbcTemplate jdbc;
-	
+
 	private SimpleJdbcInsert insertProducto;
 
 	public DaoProductoJdbc(DataSource dataSource) {
-		this.insertProducto = new SimpleJdbcInsert(dataSource)
-				.withTableName("productos")
+		this.insertProducto = new SimpleJdbcInsert(dataSource).withTableName("productos")
 				.usingGeneratedKeyColumns("id");
 	}
-	
+
 	@Override
 	public Iterable<Producto> obtenerTodos() {
 		return jdbc.query(SQL_SELECT, new BeanPropertyRowMapper<Producto>(Producto.class));
@@ -50,17 +49,18 @@ class DaoProductoJdbc implements DaoProducto {
 	public Producto insertar(Producto producto) {
 //		jdbc.update(SQL_INSERT, producto.getCodigoBarras(), producto.getNombre(), producto.getPrecio(), producto.getFechaCaducidad(), producto.getUnidades());
 //		return producto;
-		
+
 		SqlParameterSource parameters = new BeanPropertySqlParameterSource(producto);
 		Number newId = insertProducto.executeAndReturnKey(parameters);
 		producto.setId(newId.longValue());
-		
+
 		return producto;
 	}
 
 	@Override
 	public Producto modificar(Producto producto) {
-		jdbc.update(SQL_UPDATE, producto.getCodigoBarras(), producto.getNombre(), producto.getPrecio(), producto.getFechaCaducidad(), producto.getUnidades(), producto.getId());
+		jdbc.update(SQL_UPDATE, producto.getCodigoBarras(), producto.getNombre(), producto.getPrecio(),
+				producto.getFechaCaducidad(), producto.getUnidades(), producto.getId());
 		return producto;
 	}
 
