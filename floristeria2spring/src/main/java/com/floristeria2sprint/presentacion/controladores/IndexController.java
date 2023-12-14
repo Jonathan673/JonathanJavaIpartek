@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.floristeria2sprint.logicanegocio.UsuarioNegocio;
 
@@ -16,15 +15,17 @@ public class IndexController {
 	private UsuarioNegocio negocio;
 	
 //	@ResponseBody
-	@GetMapping("/index")
+	@GetMapping("/")
 	public String index(Model modelo) {
+//		return negocio.listadoProductos().toString();
 		modelo.addAttribute("productos", negocio.listadoProductos());
 		return "index";
 	}
+	
 //	@ResponseBody
 	@GetMapping("/detalle")
 	public String detalle(Model modelo, Long id) {
-		modelo.addAttribute("productos", negocio.detalleProducto(id));
+		modelo.addAttribute("producto", negocio.detalleProducto(id));
 		return "detalle";
 	}
 }
