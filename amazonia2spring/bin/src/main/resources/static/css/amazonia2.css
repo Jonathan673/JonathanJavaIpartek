@@ -1,9 +1,0 @@
-@charset "UTF-8";
-
-.btn-primary {
-	--bs-btn-bg: magenta;
-}
-
-tbody td, tbody th, tfoot td, tfoot th {
-	padding-right: 1.5rem !important;
-}
