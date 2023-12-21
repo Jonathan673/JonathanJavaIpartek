@@ -21,7 +21,7 @@ public class WebSecurityConfig {
 	// CODIFICACIÓN DE CONTRASEÑAS BCRYPT
 	@Bean
 	PasswordEncoder passwordEncoder() {
-	    return new BCryptPasswordEncoder(12); //NoOpPasswordEncoder.getInstance(); //
+	    return new BCryptPasswordEncoder(12); // NoOpPasswordEncoder.getInstance();
 	}
 	
 	// AUTENTICACIÓN
