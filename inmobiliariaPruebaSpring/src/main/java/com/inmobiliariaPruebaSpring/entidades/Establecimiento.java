@@ -1,4 +1,4 @@
-package com.inmoviliariaPruebaSpring.entidades;
+package com.inmobiliariaPruebaSpring.entidades;
 
 import java.math.BigDecimal;
 
