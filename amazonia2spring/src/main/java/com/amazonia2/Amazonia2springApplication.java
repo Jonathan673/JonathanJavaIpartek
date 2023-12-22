@@ -41,11 +41,10 @@ public class Amazonia2springApplication implements CommandLineRunner {
 		System.out.println(repo.findFirstByOrderByPrecioDesc());
 		System.out.println(repo.obtenerProductoMasCaro());
 		
-		//esto sirve para tener cifrada la contraseña y comprobar que la encuentra en a base de datos
 		String pass = passwordEncoder.encode("contra");
 		
 		System.out.println(pass);
-		//comprueba que es la misma contraseña 
+		
 		System.out.println(passwordEncoder.matches("contra", pass));
 		
 //		Producto producto = Producto.builder().nombre("Prueba").codigoBarras("1234567890128").precio(new BigDecimal("1234.12")).unidades(1).build();
