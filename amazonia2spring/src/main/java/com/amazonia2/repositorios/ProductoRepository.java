@@ -5,10 +5,12 @@ import java.time.LocalDate;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.rest.webmvc.RepositoryRestController;
 
 import com.amazonia2.entidades.Producto;
 
-
+@RepositoryRestResource(collectionResourceRel = "productos", path = "productos")
 public interface ProductoRepository extends CrudRepository<Producto, Long>, PagingAndSortingRepository<Producto, Long> {
 	Iterable<Producto> findByNombreContainsIgnoreCase(String nombre);
 	

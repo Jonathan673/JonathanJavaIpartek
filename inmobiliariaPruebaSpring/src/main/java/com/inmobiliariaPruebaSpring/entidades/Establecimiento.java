@@ -33,6 +33,9 @@ public class Establecimiento {
 	private String ubicacion;
 	@NotNull
 	@Size(min = 2, max = 50)
+	private String localidad;
+	@NotNull
+	@Size(min = 2, max = 50)
 	private String tipo_establecimiento;
 	@NotNull
 	@Min(0)
