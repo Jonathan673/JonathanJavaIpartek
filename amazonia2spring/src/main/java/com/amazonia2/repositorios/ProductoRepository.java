@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.data.rest.webmvc.RepositoryRestController;
 
 import com.amazonia2.entidades.Producto;
 
@@ -18,17 +17,10 @@ public interface ProductoRepository extends CrudRepository<Producto, Long>, Pagi
 		return findByFechaCaducidadBefore(LocalDate.now());
 	}
 	
-	// Iterable<Producto> findByFechaCaducidadBefore();
-	
 	Iterable<Producto> findByFechaCaducidadBefore(LocalDate fecha);
 	
-	//@Query(nativeQuery = true, "SELECT MAX(precio) FROM productos")
 	@Query("select p from Producto p where p.precio = (select max(p2.precio) from Producto p2)")
 	Producto obtenerProductoMasCaro();
 	
 	Producto findFirstByOrderByPrecioDesc();
-	
-//	default Producto findTopOrderByPrecioDesc() {
-//		return findTopOrderByPrecioDesc(1);
-//	}
 }

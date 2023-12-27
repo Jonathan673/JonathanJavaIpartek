@@ -1,31 +1,24 @@
 package com.amazonia2.configuraciones;
 
-import org.springframework.context.annotation.Bean;
-//import java.util.Locale;
-//
-//import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-//import org.springframework.web.servlet.LocaleResolver;
-//import org.springframework.web.servlet.i18n.SessionLocaleResolver;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.web.context.WebApplicationContext;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.amazonia2.entidades.Carrito;
 
+@ControllerAdvice
 @Configuration
 public class ConfiguracionesGenerales {
-	@Bean
-	@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
-	Carrito carrito() {
-		return new Carrito();
-	}
 	
-//	@Bean
-//    LocaleResolver localeResolver() {
-//        SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
-//        Locale locale = new Locale("es", "ES");
-//        sessionLocaleResolver.setDefaultLocale(locale);
-//        return sessionLocaleResolver;
-//    }
+	private Carrito carrito;
+	
+	public ConfiguracionesGenerales(Carrito carrito) {
+		this.carrito = carrito;
+	}
+
+	@ModelAttribute
+	private void carrito(Model modelo) {
+		modelo.addAttribute(carrito);
+	}
 }

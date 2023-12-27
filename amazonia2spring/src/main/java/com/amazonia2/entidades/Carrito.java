@@ -6,10 +6,16 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+@Component
+@SessionScope
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +29,7 @@ public class Carrito {
 	private Map<Long, Producto> productos = new HashMap<>();
 
 	public Set<Producto> getProductos() {
-		return new HashSet<Producto>(productos.values());
+		return new HashSet<>(productos.values());
 	}
 
 	public void addProducto(Producto producto) {
@@ -54,8 +60,5 @@ public class Carrito {
 		}
 		
 		return total;
-		
-//		return productos.values().stream().map(p -> p.getTotal())
-//				.reduce(BigDecimal.ZERO, (totalAcumulado, totalParcial) -> totalAcumulado.add(totalParcial));
 	}
 }

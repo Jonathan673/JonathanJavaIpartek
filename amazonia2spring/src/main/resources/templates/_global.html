@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html th:fragment="plantilla (titulo, contenido)"
+<html lang="es" th:fragment="plantilla (titulo, contenido)"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
@@ -21,12 +21,12 @@
 
 <!-- DataTables -->
 <link rel="stylesheet" href="css/dataTables.bootstrap5.min.css">
-<script src="js/jquery-3.7.0.js"></script>
+<script src="js/jquery-3.7.1.min.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/dataTables.bootstrap5.min.js"></script>
 <script>
 	$(function() {
-		new DataTable('.table-bordered', {
+		DataTable('.table-bordered', {
 			language : {
 				url : 'json/es-ES.json',
 			}
@@ -55,9 +55,9 @@
 				</ul>
 				<ul class="navbar-nav mb-2 mb-sm-0">
 					<li class="nav-item"><a class="nav-link"
-						href="admin/index.html" sec:authorize="hasRole('ROLE_Administrador')"
+						href="admin/index.html" sec:authorize="hasRole('ROLE_ADMIN')"
 						th:href="@{/admin}">Administración</a></li>
- 					<li class="navbar-text" sec:authorize="isAuthenticated()"
+					<li class="navbar-text" sec:authorize="isAuthenticated()"
 						sec:authentication="name">Nombre de usuario</li>
 					<li class="navbar-text ms-2" sec:authorize="isAuthenticated()"
 						sec:authentication="principal.authorities">Roles</li>
