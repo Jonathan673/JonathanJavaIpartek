@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es" th:fragment="plantilla (titulo, contenido)"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+<meta charset="UTF-8">
+<title th:replace="${titulo}">Inmobiliaria</title>
+
+<base href="/" th:href="@{/}">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/bootstrap-icons.min.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<link href="css/inmobiliaria.css" rel="stylesheet">
+
+<script src="js/bootstrap.bundle.min.js"></script>
+
+<link rel="icon" type="image/svg+xml" href="imgs/shop.svg">
+
+<!-- DataTables -->
+<link rel="stylesheet" href="css/dataTables.bootstrap5.min.css">
+<script src="js/jquery-3.7.1.min.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
+<script src="js/dataTables.bootstrap5.min.js"></script>
+<script>
+	$(function() {
+		DataTable('.table-bordered', {
+			language : {
+				url : 'json/es-ES.json',
+			}
+		})
+	});
+</script>
+</head>
+<body>
+<!-- Aqui se pondra el menu de navegacion -->
+	<nav class="navbar navbar-expand-sm bg-dark sticky-top"
+		data-bs-theme="dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Inmobiliaria</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-sm-0">
+					<li class="nav-item"><a class="nav-link" href="/"
+						th:href="@{/}">Principal</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- Este será el apartado que será sustituido por nuestro contenido -->
+	<div class="my-3">
+		<main th:replace="${contenido}">
+			<p>Contenido por defecto</p>
+		</main>
+	</div>
+	<footer
+		class="sticky-bottom w-100 text-bg-dark p-2 mt-4 d-flex justify-content-between">
+		<p>&copy;2024 Jonathan Camacho</p>
+		<ul class="list-unstyled d-flex">
+			<li><a class="text-white p-1" href="#"><i
+					class="bi bi-facebook"></i></a></li>
+			<li><a class="text-white p-1" href="#"><i
+					class="bi bi-twitter-x"></i></a></li>
+			<li><a class="text-white p-1" href="#"><i
+					class="bi bi-instagram"></i></a></li>
+			<li><a class="text-white p-1" href="#"><i
+					class="bi bi-youtube"></i></a></li>
+			<li><a class="text-white p-1" href="#"><i
+					class="bi bi-tiktok"></i></a></li>
+		</ul>
+	</footer>
+</body>
+</html>

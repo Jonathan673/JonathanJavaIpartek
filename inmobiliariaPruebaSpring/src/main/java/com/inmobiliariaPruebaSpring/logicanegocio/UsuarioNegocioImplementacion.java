@@ -6,9 +6,6 @@ import org.springframework.stereotype.Component;
 import com.inmobiliariaPruebaSpring.entidades.Establecimiento;
 import com.inmobiliariaPruebaSpring.repositorios.EstablecimientoRepository;
 
-import lombok.extern.java.Log;
-
-@Log
 @Component
 @Primary
 public class UsuarioNegocioImplementacion implements UsuarioNegocio{

@@ -1,6 +1,6 @@
 package com.amazonia2.presentacion.controladores.rest;
 
-import org.modelmapper.ModelMapper;
+//import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -36,36 +36,36 @@ public class UsuarioNegocioRestController {
 
 	// Rendimiento
 	// Más ligero
-	@GetMapping("/carrito/{id}/agregar")
-	public CarritoDTO agregarProductoACarrito(@PathVariable Long id) {
-		negocio.agregarProductoACarrito(id, carrito);
-
-		return sesionACarrito();
-	}
+//	@GetMapping("/carrito/{id}/agregar")
+//	public CarritoDTO agregarProductoACarrito(@PathVariable Long id) {
+//		negocio.agregarProductoACarrito(id, carrito);
+//
+//		return sesionACarrito();
+//	}
 
 	// Operación sin estado
 	// Tú me das estado inicial
 	// Yo te devuelvo estado final
 	// Más limpia
 	// Más pesada
-	@PutMapping("/carrito/{id}/agregar")
-	public CarritoDTO agregarProductoACarrito(@PathVariable Long id, Carrito carrito) {
-		return carritoACarritoDTO(negocio.agregarProductoACarrito(id, carrito));
-	}
+//	@PutMapping("/carrito/{id}/agregar")
+//	public CarritoDTO agregarProductoACarrito(@PathVariable Long id, Carrito carrito) {
+//		return carritoACarritoDTO(negocio.agregarProductoACarrito(id, carrito));
+//	}
+//
+//	@GetMapping("/carrito")
+//	public Object obtenerCarrito() {
+//		return sesionACarrito();
+//	}
+//
+//	private CarritoDTO sesionACarrito() {
+//		return carritoACarritoDTO(carrito);
+//	}
 
-	@GetMapping("/carrito")
-	public Object obtenerCarrito() {
-		return sesionACarrito();
-	}
-
-	private CarritoDTO sesionACarrito() {
-		return carritoACarritoDTO(carrito);
-	}
-
-	// Mapeador de Carrito a CarritoDTO
-	private ModelMapper mapper = new ModelMapper();
-
-	private CarritoDTO carritoACarritoDTO(Carrito carrito) {
-		return mapper.map(carrito, CarritoDTO.class);
-	}
+//	// Mapeador de Carrito a CarritoDTO
+//	private ModelMapper mapper = new ModelMapper();
+//
+//	private CarritoDTO carritoACarritoDTO(Carrito carrito) {
+//		return mapper.map(carrito, CarritoDTO.class);
+//	}
 }
