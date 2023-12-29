@@ -11,7 +11,10 @@ import com.inmobiliariaPruebaSpring.logicanegocio.UsuarioNegocio;
 @RestController
 @RequestMapping("/api/v1/establecimientos")
 public class EstablecimientoRestController {
-	//sustitucion de @autowire por un constructor
+	
+	/**
+	 * sustitucion de @autowire por un constructor
+	 */
 	private UsuarioNegocio usuarioNegocio;
 	
 	public EstablecimientoRestController(UsuarioNegocio usuarioNegocio) {
