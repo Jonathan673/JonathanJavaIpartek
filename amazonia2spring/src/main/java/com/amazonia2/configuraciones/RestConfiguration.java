@@ -10,7 +10,6 @@ import jakarta.persistence.metamodel.Type;
 
 @Configuration
 public class RestConfiguration implements RepositoryRestConfigurer {
-
     private EntityManager entityManager;
     
     public RestConfiguration(EntityManager entityManager) {

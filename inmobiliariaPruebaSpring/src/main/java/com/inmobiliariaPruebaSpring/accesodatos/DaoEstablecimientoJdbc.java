@@ -17,7 +17,7 @@ public class DaoEstablecimientoJdbc implements DaoEstablecimiento{
 	private static final String SQL_SELECT = "SELECT id, nombre, ubicacion, localidad, tipo_establecimiento, precio FROM establecimientos";
 	
 	
-	@Autowired
+	
 	private JdbcTemplate jdbc;
 
 	private SimpleJdbcInsert insertarEstablecimiento;
