@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es"
+	th:replace="~{_global :: plantilla(~{::title}, ~{::main})}"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Edicion Establecimiento</title>
+</head>
+
+<body>
+	<main class="container">
+		<form action="index.html" th:action="@{/}"
+			th:object="${establecimiento}" method="post">
+			<div class="row mb-2">
+				<label class="col-sm-2 col-form-label" for="id">Id</label>
+				<div class="col-sm">
+					<input class="form-control"
+						th:classappend="${#fields.hasErrors('id')} ? 'is-invalid'"
+						th:field="*{id}" placeholder="Id">
+					<div class="invalid-feedback" th:if="${#fields.hasErrors('id')}"
+						th:errors="*{id}"></div>
+				</div>
+			</div>
+			<div class="row mb-2">
+				<label class="col-sm-2 col-form-label" for="nombre">Nombre</label>
+				<div class="col-sm">
+					<input class="form-control"
+						th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid'"
+						th:field="*{nombre}" placeholder="Nombre">
+					<div class="invalid-feedback"
+						th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+				</div>
+			</div>
+			<div class="row mb-2">
+				<label class="col-sm-2 col-form-label" for="nombre">Localidad</label>
+				<div class="col-sm">
+					<input class="form-control"
+						th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid'"
+						th:field="*{localidad}" placeholder="Localidad">
+					<div class="invalid-feedback"
+						th:if="${#fields.hasErrors('localidad')}" th:errors="*{localidad}"></div>
+				</div>
+			</div>
+			<div class="row mb-2">
+				<label class="col-sm-2 col-form-label" for="nombre">ubicacion</label>
+				<div class="col-sm">
+					<input class="form-control"
+						th:classappend="${#fields.hasErrors('ubicacion')} ? 'is-invalid'"
+						th:field="*{ubicacion}" placeholder="Ubicacion">
+					<div class="invalid-feedback"
+						th:if="${#fields.hasErrors('ubicacion')}" th:errors="*{ubicacion}"></div>
+				</div>
+			</div>
+			<div class="row mb-2">
+				<label class="col-sm-2 col-form-label" for="nombre">Tipo de
+					establecimiento</label>
+				<div class="col-sm">
+					<input class="form-control"
+						th:classappend="${#fields.hasErrors('tipo_establecimiento')} ? 'is-invalid'"
+						th:field="*{tipo_establecimiento}"
+						placeholder="Tipo de Establecimiento">
+					<div class="invalid-feedback"
+						th:if="${#fields.hasErrors('tipo_establecimiento')}"
+						th:errors="*{tipo_establecimiento}"></div>
+				</div>
+			</div>
+
+			<div class="row mb-2">
+				<label class="col-sm-2 col-form-label" for="precio">Precio</label>
+				<div class="col-sm">
+					<input class="form-control" type="number" step=".01"
+						th:classappend="${#fields.hasErrors('precio')} ? 'is-invalid'"
+						th:field="*{precio}" placeholder="Precio">
+					<div class="invalid-feedback"
+						th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
+				</div>
+			</div>
+
+			<div class="row mb-2">
+				<div class="offset-sm-2 col-sm">
+					<button class="btn btn-primary">Guardar</button>
+					<a class="btn btn-danger" href="index.html" th:href="@{/}">Cancelar</a>
+				</div>
+			</div>
+
+		</form>
+
+
+	</main>
+</body>
+
+</html>
