@@ -38,11 +38,16 @@ public class IndexController {
 		return "detalle";
 	}
 	
+	
+	
+	
 	@GetMapping("/add")
 	public String post(Model modelo, @Valid Establecimiento establecimiento) {
 		adminNegocio.insertar(establecimiento);
 		return "redirect:/";
 	}
+
+	
 	
 	
 	@GetMapping("/borrar")

@@ -25,19 +25,22 @@ public class Establecimiento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotNull
+//	@NotNull
 	@Size(min = 2, max = 50)
 	private String nombre;
-	@NotNull
+//	@NotNull
 	@Size(min = 2, max = 100)
 	private String ubicacion;
-	@NotNull
+//	@NotNull
 	@Size(min = 2, max = 50)
 	private String localidad;
-	@NotNull
+//	@NotNull
 	@Size(min = 2, max = 50)
 	private String tipo_establecimiento;
-	@NotNull
+//	@NotNull
 	@Min(0)
 	private BigDecimal precio;
+//	@NotNull
+	@Size(min = 2, max = 45)
+	private String tipo_contrato;
 }

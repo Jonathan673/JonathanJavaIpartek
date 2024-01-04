@@ -36,4 +36,12 @@ public class UsuarioNegocioImplementacion implements UsuarioNegocio{
 		return establecimientoRepositorio.findById(id).orElse(null);
 	}
 
+	/**
+	 * Busca y lista los establecimientos segun el tipo de contrato
+	 */
+	@Override
+	public Iterable<Establecimiento> obtenerPorTipoContrato(String contrato) {
+		return null;
+	}
+
 }

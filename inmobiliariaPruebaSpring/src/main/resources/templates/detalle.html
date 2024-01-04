@@ -40,10 +40,13 @@
 								th:text="${#numbers.formatCurrency(establecimientos.precio)}">1000,00€</span>
 							</li>
 							<li class="list-group-item d-flex justify-content-between">
+								<span class="fw-bold">Tipo de Contrato:</span> <span
+								th:text="|${establecimientos.tipo_contrato} |">Piso</span>
+							</li>
+							<li class="list-group-item d-flex justify-content-between">
 								<a class="btn btn-secondary fs-5" th:href="@{/}"
-								href="index.html">Volver</a> 
- 							<a
-								class="btn btn-secondary fs-5" th:href="@{/borrar(id=${establecimientos.id})}"
+								href="index.html">Volver</a> <a class="btn btn-secondary fs-5"
+								th:href="@{/borrar(id=${establecimientos.id})}"
 								href="detalle.html">Eliminar</a>
 							</li>
 						</ul>

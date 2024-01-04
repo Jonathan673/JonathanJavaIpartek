@@ -10,7 +10,7 @@
 
 <body>
 	<main class="container">
-		<form action="index.html" th:action="@{/}"
+		<form action="index.html" th:action="@{}"
 			th:object="${establecimiento}" method="post">
 			<div class="row mb-2">
 				<label class="col-sm-2 col-form-label" for="id">Id</label>
@@ -33,17 +33,17 @@
 				</div>
 			</div>
 			<div class="row mb-2">
-				<label class="col-sm-2 col-form-label" for="nombre">Localidad</label>
+				<label class="col-sm-2 col-form-label" for="localidad">Localidad</label>
 				<div class="col-sm">
 					<input class="form-control"
-						th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid'"
+						th:classappend="${#fields.hasErrors('localidad')} ? 'is-invalid'"
 						th:field="*{localidad}" placeholder="Localidad">
 					<div class="invalid-feedback"
 						th:if="${#fields.hasErrors('localidad')}" th:errors="*{localidad}"></div>
 				</div>
 			</div>
 			<div class="row mb-2">
-				<label class="col-sm-2 col-form-label" for="nombre">ubicacion</label>
+				<label class="col-sm-2 col-form-label" for="ubicacion">ubicacion</label>
 				<div class="col-sm">
 					<input class="form-control"
 						th:classappend="${#fields.hasErrors('ubicacion')} ? 'is-invalid'"
@@ -53,8 +53,8 @@
 				</div>
 			</div>
 			<div class="row mb-2">
-				<label class="col-sm-2 col-form-label" for="nombre">Tipo de
-					establecimiento</label>
+				<label class="col-sm-2 col-form-label" for="tipo_establecimiento">Tipo
+					de establecimiento</label>
 				<div class="col-sm">
 					<input class="form-control"
 						th:classappend="${#fields.hasErrors('tipo_establecimiento')} ? 'is-invalid'"
@@ -74,6 +74,17 @@
 						th:field="*{precio}" placeholder="Precio">
 					<div class="invalid-feedback"
 						th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
+				</div>
+			</div>
+			<div class="row mb-2">
+				<label class="col-sm-2 col-form-label" for="tipo_contrato">alquiler</label>
+				<div class="col-sm">
+					<input class="form-control"
+						th:classappend="${#fields.hasErrors('tipo_contrato')} ? 'is-invalid'"
+						th:field="*{tipo_contrato}" placeholder="Tipo Contrato">
+					<div class="invalid-feedback"
+						th:if="${#fields.hasErrors('tipo_contrato')}"
+						th:errors="*{tipo_contrato}"></div>
 				</div>
 			</div>
 
