@@ -41,7 +41,8 @@ public class IndexController {
 	
 	
 	
-	@GetMapping("/add")
+//	@GetMapping("/add")
+	@PostMapping
 	public String post(Model modelo, @Valid Establecimiento establecimiento) {
 		adminNegocio.insertar(establecimiento);
 		return "redirect:/";
