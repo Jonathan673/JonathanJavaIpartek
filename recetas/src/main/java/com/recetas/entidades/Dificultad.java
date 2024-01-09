@@ -30,8 +30,8 @@ public class Dificultad {
 	@NotNull
 	private String dificultad;
 	
-//	@ToString.Exclude
-//	@EqualsAndHashCode.Exclude
-//	@OneToMany(mappedBy = "dificultad")
-//	private Set<Receta> recetas;
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToMany(mappedBy = "dificultad")
+	private Set<Receta> recetas;
 }
