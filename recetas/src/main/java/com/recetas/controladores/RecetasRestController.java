@@ -1,6 +1,8 @@
 package com.recetas.controladores;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,5 +21,10 @@ public class RecetasRestController {
 	@GetMapping
 	public Iterable<Receta> ObtenerTodos(){
 		return adminServicio.listarTodo();
+	}
+	
+	@PostMapping
+	public Receta post(@RequestBody Receta receta) {
+		return adminServicio.insertar(receta);
 	}
 }
