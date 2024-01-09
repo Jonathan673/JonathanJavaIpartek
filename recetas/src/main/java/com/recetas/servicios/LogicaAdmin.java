@@ -4,5 +4,5 @@ import com.recetas.entidades.Receta;
 
 public interface LogicaAdmin {
 	Iterable <Receta> listarTodo();
-	Receta insertar();
+	Receta insertar(Receta receta);
 }
