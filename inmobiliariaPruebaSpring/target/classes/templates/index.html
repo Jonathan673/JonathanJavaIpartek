@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es"
+	th:replace="~{_global :: plantilla(~{::title}, ~{::main})}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Listado de establecimientos disponibles</title>
+</head>
+<body>
+	<main class="container-fluid">
+		<div
+			class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-4">
+			<div th:each="e: ${establecimientos}" class="col">
+				<div class="card h-100">
+					<img th:src="|https://picsum.photos/400/300?${e.id}|"
+						src="https://picsum.photos/400/300" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 th:text="${e.nombre}" class="card-title">Establecimiento</h5>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item d-flex justify-content-between">
+								<span class="fw-bold">Precio:</span> <span
+								th:text="${#numbers.formatCurrency(e.precio)}">1000,50€</span>
+							</li>
+						</ul>
+
+					</div>
+					<div class="card-footer">
+						<div class="text-center">
+							<a class="btn btn-secondary fs-5"
+								th:href="@{/detalle/{id}(id=${e.id})}" href="detalle.html"><i
+								class="bi bi-search"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
