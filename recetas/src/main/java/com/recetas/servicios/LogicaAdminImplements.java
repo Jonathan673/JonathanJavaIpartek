@@ -1,12 +1,12 @@
 package com.recetas.servicios;
 
 import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.recetas.entidades.Receta;
 import com.recetas.repositorios.RecetasRepository;
 
-@Service
+@Component
 @Primary
 public class LogicaAdminImplements implements LogicaAdmin{
 
