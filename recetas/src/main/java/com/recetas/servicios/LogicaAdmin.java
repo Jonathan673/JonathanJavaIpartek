@@ -1,5 +1,8 @@
 package com.recetas.servicios;
 
-public interface LogicaAdmin {
+import com.recetas.entidades.Receta;
 
+public interface LogicaAdmin {
+	Iterable <Receta> listarTodo();
+	Receta insertar();
 }
