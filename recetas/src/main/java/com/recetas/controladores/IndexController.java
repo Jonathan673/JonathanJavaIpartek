@@ -25,11 +25,15 @@ public class IndexController {
 		modelo.addAttribute("recetas", adminServicio.listarTodo());
 		return "mostrar";
 	}
-	
-//	@GetMapping("/add")
-	@PostMapping
+
+	@PostMapping("/add")
 	public String post(Model modelo, @Valid Receta receta) {
 		adminServicio.insertar(receta);
 		return "redirect:/";
+	}
+	@GetMapping("/formulario")
+	public String insertarFormulario(Model modelo) {
+		modelo.addAttribute("receta", new Receta());
+		return "insertar";
 	}
 }
