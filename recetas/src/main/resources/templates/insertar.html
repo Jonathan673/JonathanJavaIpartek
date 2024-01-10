@@ -14,7 +14,7 @@
 		<h1>Formulario</h1>
 		<form action="mostrar.html" th:action="@{/add}" th:object="${receta}"
 			method="post">
-			 <div class="row mb-2">
+			<!--  <div class="row mb-2">
 				<label class="col-sm-2 col-form-label" for="id">Id</label>
 				<div class="col-sm">
 					<input class="form-control"
@@ -23,7 +23,7 @@
 					<div class="invalid-feedback" th:if="${#fields.hasErrors('id')}"
 						th:errors="*{id}"></div>
 				</div>
-			</div>
+			</div>-->
 			<div class="row mb-2">
 				<label class="col-sm-2 col-form-label" for="nombre">Nombre</label>
 				<div class="col-sm">
@@ -34,33 +34,33 @@
 						th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
 				</div>
 			</div>
-			<div class="row mb-2">
+			<!-- <div class="row mb-2">
 				<label class="col-sm-2 col-form-label" for="FK_dificultad">Dificultad</label>
 				<div class="col-sm">
 					<input class="form-control" type="number"
 						th:classappend="${#fields.hasErrors('FK_dificultad')} ? 'is-invalid'"
-						th:field="*{FK_dificultad}" placeholder="Dificultad">
+						th:field="*{FK_dificultad.id}" placeholder="Dificultad">
 					<div class="invalid-feedback"
 						th:if="${#fields.hasErrors('FK_dificultad')}"
-						th:errors="*{FK_dificultad}"></div>
+						th:errors="*{FK_dificultad.id}"></div>
 				</div>
-			</div>
+			</div>-->
 			<!--  -->
-			<!-- <div class="form-check">
+			<div class="form-check">
 				<input class="form-check-input" type="radio" name="flexRadioDefault"
-					id="flexRadioDefault1" th:field="*{FK_dificultad}" th:value="1"> 
+					id="flexRadioDefault1" th:field="*{FK_dificultad.id}" th:value="1"> 
 					<label class="form-check-label" for="FK_dificultad">Fácil</label>
 			</div>
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="flexRadioDefault"
-					id="flexRadioDefault2" checked th:field="*{FK_dificultad}" th:value="2"> 
+					id="flexRadioDefault2" checked th:field="*{FK_dificultad.id}" th:value="2"> 
 					<label class="form-check-label" for="FK_dificultad">Normal</label>
 			</div>
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="flexRadioDefault"
-					id="flexRadioDefault1" th:field="*{FK_dificultad}" th:value="3"> 
+					id="flexRadioDefault1" th:field="*{FK_dificultad.id}" th:value="3"> 
 					<label class="form-check-label" for="FK_dificultad">Difícil</label>
-			</div>-->
+			</div>
 			<!--  -->
 			<div class="row mb-2">
 				<div class="offset-sm-2 col-sm">

@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,16 +24,12 @@ public class Receta {
 //	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-//	@NotNull
+	@NotNull
 	@Size(min = 3, max = 100)
 	private String nombre;
-//	@NotNull
-//	private Long FK_dificultad;
-//	@NotNull
-//	@ManyToOne
-//	@JoinColumn(name="FK_dificultad")
-//	private Dificultad FK_dificultad;
+	
+	@NotNull
 	@ManyToOne
 	@Builder.Default
-	private Dificultad FK_dificultad = Dificultad.RECETA;
+	private Dificultad FK_dificultad = Dificultad.DIFICULTAD;
 }
