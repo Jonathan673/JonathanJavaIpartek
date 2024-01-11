@@ -8,18 +8,27 @@
 </head>
 <body>
 	<main>
-		<h1>tabla recetas</h1>
-		<table class="table table-sm">
-			<tr>
-				<th>Id</th>
-				<th>Nombre</th>
-				<th>Dificultad</th>
-			</tr>
-			<tr th:each="r: ${recetas}" class="col">
-				<td th:text="${r.id}"></td>
-				<td th:text="${r.nombre}"></td>
-				<td th:text="${r.FK_dificultad}"></td>
-			</tr>
+		<h1>Recetas Disponibles</h1>
+		<br> <span> Esto es una lista de las recetas que
+			recomendamos en esta Web. Si quieres añadir una receta a la lista
+			pulsa el enlace de añadir situado arriba a la derecha. </span> <br>
+			<br><br>
+		<table
+			class="table table-striped-columns">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Dificultad</th>
+				</tr>
+			</thead>
+			<tbody class="table-group-divider">
+				<tr th:each="r: ${recetas}" class="col">
+					<td th:text="${r.id}"></td>
+					<td th:text="${r.nombre}"></td>
+					<td th:text="${r.FK_dificultad}"></td>
+				</tr>
+			</tbody>
 		</table>
 	</main>
 </body>
